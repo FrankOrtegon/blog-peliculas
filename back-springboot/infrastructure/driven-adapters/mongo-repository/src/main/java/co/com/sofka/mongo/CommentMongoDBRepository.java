@@ -1,7 +1,8 @@
 package co.com.sofka.mongo;
 
+import co.com.sofka.model.publication.entity.Comment;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.data.repository.query.QueryByExampleExecutor;
 
-public interface MongoDBRepository extends MongoRepository<Object/* change for adapter model */, String> , QueryByExampleExecutor<Object/* change for adapter model */> {
+public interface CommentMongoDBRepository extends MongoRepository<Comment, String> , QueryByExampleExecutor<Comment> {
 }
