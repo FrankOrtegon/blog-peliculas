@@ -1,8 +1,5 @@
 package co.com.sofka.model.publication;
 import co.com.sofka.model.count.values.IdCount;
-import co.com.sofka.model.count.values.IdUser;
-import co.com.sofka.model.publication.entity.Category;
-import co.com.sofka.model.publication.values.IdCategory;
 import co.com.sofka.model.publication.values.IdPublication;
 import co.com.sofka.model.publication.values.Text;
 import co.com.sofka.model.publication.values.Title;

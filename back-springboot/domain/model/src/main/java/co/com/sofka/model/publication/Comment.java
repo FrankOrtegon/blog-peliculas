@@ -1,4 +1,4 @@
-package co.com.sofka.model.publication.entity;
+package co.com.sofka.model.publication;
 
 import co.com.sofka.model.count.values.IdCount;
 import co.com.sofka.model.publication.values.Content;
@@ -11,8 +11,8 @@ import lombok.Data;
 @Builder(toBuilder = true)
 public class Comment {
 
-    private String id;
-    private IdComment idComment;
+
+    private String idComment;
     private IdPublication idPublication;
     private IdCount idCount;
     private Content content;
@@ -20,8 +20,7 @@ public class Comment {
     public Comment() {
     }
 
-    public Comment(String id, IdComment idComment, IdPublication idPublication, IdCount idCount, Content content) {
-        this.id = id;
+    public Comment(String idComment, IdPublication idPublication, IdCount idCount, Content content) {
         this.idComment = idComment;
         this.idPublication = idPublication;
         this.idCount = idCount;

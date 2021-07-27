@@ -1,4 +1,4 @@
-package co.com.sofka.model.publication.entity;
+package co.com.sofka.model.publication;
 
 import co.com.sofka.model.publication.values.IdCategory;
 import co.com.sofka.model.publication.values.TypeCategory;

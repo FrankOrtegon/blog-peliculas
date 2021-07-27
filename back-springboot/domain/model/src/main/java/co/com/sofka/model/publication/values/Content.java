@@ -6,9 +6,9 @@ public class Content {
     private final String value;
 
     public Content(String value) {
-        this.value = Objects.requireNonNull(value,"la fecha es requerido");
+        this.value = Objects.requireNonNull(value,"Content is required");
         if (this.value.isEmpty()){
-            throw new IllegalArgumentException("el campo fecha no puede ser vacio");
+            throw new IllegalArgumentException("Content cannot be empty");
         }
     }
 

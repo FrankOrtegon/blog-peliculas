@@ -1,4 +1,4 @@
-package co.com.sofka.model.count.entity;
+package co.com.sofka.model.count;
 
 import co.com.sofka.model.count.values.IdUser;
 import co.com.sofka.model.count.values.Name;
