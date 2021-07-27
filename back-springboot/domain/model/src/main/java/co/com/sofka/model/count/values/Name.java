@@ -7,9 +7,9 @@ public class Name {
     private final String value;
 
     public Name(String value) {
-        this.value = Objects.requireNonNull(value,"name is required");
+        this.value = Objects.requireNonNull(value,"Name is required");
         if(this.value.isEmpty()){
-            throw new IllegalArgumentException("name cannot be empty");
+            throw new IllegalArgumentException("Name cannot be empty");
         }
     }
 
