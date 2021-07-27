@@ -1,13 +1,9 @@
-import { compose, applyMiddleware, createStore } from "redux";
+import { applyMiddleware, createStore } from "redux";
 import reducers from './reducers';
 import middleware from './middleware';
-
-const composeEnhancers =
-    (process.env.NODE_ENV === 'development' &&
-        window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__) ||
-    compose;
+import {composeWithDevTools} from "redux-devtools-extension";
 
 export const configureStore = (services) => createStore(
     reducers,
-    composeEnhancers(applyMiddleware(...middleware.map(f => f(services))))
+    composeWithDevTools(applyMiddleware(...middleware.map(f => f(services))))
 );

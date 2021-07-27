@@ -8,6 +8,7 @@ const loginUserFlow = ({firebase,api}) => ({dispatch}) => next => async (action)
             const user = await firebase.user.getUser();
             dispatch(loginUserSuccess(user));
             try{
+                //await api.user.postUser(user)
                 const count = await api.count.getCount(user.userid)
                 dispatch(loadCount(count))
             }catch(error){
@@ -31,7 +32,6 @@ const updateCountFlow = ({api}) => ({dispatch}) => next => async (action) => {
             dispatch(updateCountFailure(error))
         }
     }
-
 }
 
 const middlewareUser = [
