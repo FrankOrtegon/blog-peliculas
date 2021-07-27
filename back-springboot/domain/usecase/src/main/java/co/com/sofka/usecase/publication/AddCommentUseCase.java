@@ -10,7 +10,7 @@ public class AddCommentUseCase {
 
     private final PublicationRepository publicationRepository;
 
-    private Comment addComment(Comment comment){
+    public Comment addComment(Comment comment){
         return publicationRepository.addComment(comment);
     }
 

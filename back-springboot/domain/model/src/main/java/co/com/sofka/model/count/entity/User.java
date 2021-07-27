@@ -3,7 +3,11 @@ package co.com.sofka.model.count.entity;
 import co.com.sofka.model.count.values.IdUser;
 import co.com.sofka.model.count.values.Name;
 import co.com.sofka.model.count.values.UrlPhoto;
+import lombok.Builder;
+import lombok.Data;
 
+@Data
+@Builder(toBuilder = true)
 public class User {
 
     private IdUser idUser;

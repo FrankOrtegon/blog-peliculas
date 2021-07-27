@@ -7,7 +7,13 @@ public class IdUser {
         this.idUser = idUser;
     }
 
+    public String getIdUser(){
+        return idUser;
+    }
+
     public static IdUser of(String idUser){
         return new IdUser(idUser);
     }
+
+
 }

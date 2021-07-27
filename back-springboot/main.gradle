@@ -39,7 +39,7 @@ subprojects {
 
 jacoco {
     toolVersion = "${jacocoVersion}"
-    reportsDir = file("$buildDir/reports")
+    reportsDir= file("$buildDir/reports")
 }
 
 task jacocoMergedReport(type: JacocoReport) {

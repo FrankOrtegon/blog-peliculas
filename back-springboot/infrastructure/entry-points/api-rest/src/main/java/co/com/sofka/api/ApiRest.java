@@ -1,20 +1,19 @@
 package co.com.sofka.api;
+import co.com.sofka.model.publication.entity.Comment;
+import co.com.sofka.usecase.publication.AddCommentUseCase;
 import lombok.AllArgsConstructor;
 import org.springframework.http.MediaType;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping(value = "/api", produces = MediaType.APPLICATION_JSON_VALUE)
 @AllArgsConstructor
 public class ApiRest {
-//    private final MyUseCase useCase;
+    private final AddCommentUseCase addCommentUseCase;
 
 
-    @GetMapping(path = "/path")
-    public String commandName() {
-//      return useCase.doAction();
-        return "Hello World";
+    @PostMapping(path = "/add")
+    public Comment addCommentary(@RequestBody Comment comment) {
+      return addCommentUseCase.addComment(comment);
     }
 }

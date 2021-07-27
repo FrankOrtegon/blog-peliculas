@@ -1,10 +1,10 @@
 apply plugin: 'org.springframework.boot'
 
 dependencies {
-	compile group: 'org.springframework.boot', name: 'spring-boot-starter-undertow', version: '2.4.2'
-	implementation project(':api-rest')
-	compile 'org.reactivecommons.utils:object-mapper:0.1.0'
-	implementation project(':mongo-repository')
+    compile group: 'org.springframework.boot', name: 'spring-boot-starter-undertow', version: '2.4.2'
+    implementation project(':api-rest')
+    compile 'org.reactivecommons.utils:object-mapper:0.1.0'
+    implementation project(':mongo-repository')
     implementation project(':model')
     implementation project(':usecase')
     compile 'org.springframework.boot:spring-boot-starter'
@@ -17,5 +17,5 @@ task explodedJar(type: Copy) {
 }
 
 configurations{
-	compile.exclude group: "org.springframework.boot", module:"spring-boot-starter-tomcat"
+    compile.exclude group: "org.springframework.boot", module:"spring-boot-starter-tomcat"
 }
