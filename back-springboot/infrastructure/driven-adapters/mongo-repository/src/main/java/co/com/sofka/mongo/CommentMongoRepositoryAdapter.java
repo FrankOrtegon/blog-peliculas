@@ -1,11 +1,14 @@
 package co.com.sofka.mongo;
 
+
 import co.com.sofka.model.publication.Comment;
 import co.com.sofka.model.publication.gateways.PublicationRepository;
 import co.com.sofka.mongo.entity.CommentEntity;
 import co.com.sofka.mongo.helper.AdapterOperations;
 import org.reactivecommons.utils.ObjectMapper;
 import org.springframework.stereotype.Repository;
+
+import java.util.Optional;
 
 @Repository
 public class CommentMongoRepositoryAdapter extends AdapterOperations<CommentEntity,CommentEntity, String, CommentMongoDBRepository>
@@ -21,17 +24,38 @@ implements PublicationRepository
         super(repository, mapper, d -> mapper.map(d, CommentEntity.class));
     }
 
- /*   @Override
-    public Comment addComment(Comment comment) {
-        return this.repository.save(comment);
-    }*/
 
     @Override
     public Comment addComment(Comment comment) {
-        CommentEntity commentEntity = new CommentEntity(comment.getIdPublication(), comment.getIdCount(), comment.getContent());
+        CommentEntity commentEntity = new CommentEntity(comment.getIdComment(),comment.getIdPublication(), comment.getIdCount(), comment.getContent());
         this.repository.save(commentEntity);
         Comment commentary = comment;
         commentary.setIdComment(commentEntity.getIdComment());
         return commentary;
     }
+
+    @Override
+    public Comment findByIdComment(String id){
+        Optional<CommentEntity> commentEntity = this.repository.findById(id);
+        Comment comment = new Comment(commentEntity.get().getIdComment(),commentEntity.get().getIdPublication(),commentEntity.get().getIdCount(),commentEntity.get().getContent());
+        return comment;
+    }
+
+    @Override
+    public Comment save(Comment comment) {
+        CommentEntity commentEntity = new CommentEntity(comment.getIdComment(),comment.getIdPublication(), comment.getIdCount(), comment.getContent());
+        this.repository.save(commentEntity);
+        Comment commentary = comment;
+        commentary.setIdComment(commentEntity.getIdComment());
+        return commentary;
+    }
+
+    @Override
+    public Comment updateComment(Comment comment) {
+        Optional<CommentEntity> commentEntity = this.repository.findById(comment.getIdComment());
+        commentEntity.get().setContent(comment.getContent());
+        repository.save(commentEntity.get());
+        return findByIdComment(commentEntity.get().getIdComment());
+    }
+
 }

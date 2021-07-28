@@ -26,17 +26,7 @@ class AddCommentUseCaseTest {
     @Test
     @DisplayName("Crear comentario")
     public void test(){
-        Comment comment = new Comment();
-        comment.setIdComment("1");
-        comment.setIdPublication(
-                new IdPublication("12")
-        );
-        comment.setIdCount(
-                new IdCount("123")
-        );
-        comment.setContent(
-                new Content("Si se puede")
-        );
+
 
     }
 
