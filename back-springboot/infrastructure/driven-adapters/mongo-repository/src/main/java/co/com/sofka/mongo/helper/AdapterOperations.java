@@ -1,5 +1,6 @@
 package co.com.sofka.mongo.helper;
 
+import co.com.sofka.model.publication.Comment;
 import org.reactivecommons.utils.ObjectMapper;
 import org.springframework.data.domain.Example;
 import org.springframework.data.mongodb.repository.MongoRepository;
@@ -56,8 +57,8 @@ public abstract class AdapterOperations<E, D, I, R extends MongoRepository<D, I>
         return repository.saveAll(data);
     }
 
-    public E findById(I id) {
-        return toEntity(repository.findById(id).orElse(null));
+    public Comment findByIdComment(I id) {
+        return (Comment) toEntity(repository.findById(id).orElse(null));
     }
 
     public List<E> findByExample(E entity) {

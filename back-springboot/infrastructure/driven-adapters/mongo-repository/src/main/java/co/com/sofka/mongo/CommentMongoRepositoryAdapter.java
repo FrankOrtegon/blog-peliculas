@@ -7,6 +7,8 @@ import co.com.sofka.mongo.helper.AdapterOperations;
 import org.reactivecommons.utils.ObjectMapper;
 import org.springframework.stereotype.Repository;
 
+import java.util.Optional;
+
 @Repository
 public class CommentMongoRepositoryAdapter extends AdapterOperations<CommentEntity,CommentEntity, String, CommentMongoDBRepository>
 implements PublicationRepository
@@ -21,10 +23,7 @@ implements PublicationRepository
         super(repository, mapper, d -> mapper.map(d, CommentEntity.class));
     }
 
- /*   @Override
-    public Comment addComment(Comment comment) {
-        return this.repository.save(comment);
-    }*/
+
 
     @Override
     public Comment addComment(Comment comment) {
@@ -34,4 +33,19 @@ implements PublicationRepository
         commentary.setIdComment(commentEntity.getIdComment());
         return commentary;
     }
+
+    @Override
+    public void deleteByIdComment(String id) {
+
+        this.repository.deleteById(id);
+    }
+
+    @Override
+    public Comment findByIdComment(String id){
+
+       Optional<CommentEntity> commentEntity = this.repository.findById(id);
+        Comment comment = new Comment(commentEntity.get().getIdComment(),commentEntity.get().getIdPublication(),commentEntity.get().getIdCount(),commentEntity.get().getContent());
+        return comment;
+    }
+
 }

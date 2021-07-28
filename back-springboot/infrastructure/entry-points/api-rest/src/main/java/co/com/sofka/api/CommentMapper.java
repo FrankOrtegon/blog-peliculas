@@ -8,7 +8,7 @@ public class CommentMapper {
 
     public Comment fromDTO(CommentDTO commentDTO){
         Comment comment = new Comment();
-        comment.setIdComment(comment.getIdComment());
+        comment.setIdComment(commentDTO.getIdComment());
         comment.setIdPublication(commentDTO.getIdPublication());
         comment.setIdCount(commentDTO.getIdCount());
         comment.setContent(commentDTO.getContent());
