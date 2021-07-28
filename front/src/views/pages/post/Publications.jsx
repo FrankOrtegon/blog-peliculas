@@ -2,6 +2,7 @@ import React, {useState} from "react";
 
 const Publications = () => {
     const [category, setCategory] = useState('all');
+
     return (
         <div className="container">
             <div className="row">
@@ -35,12 +36,17 @@ const Publications = () => {
                     <h1 className="my-5 text-center cover-heading mt-5 font-weight-bold">
                         {category} Publications <i className="bi bi-camera-reels"/>
                     </h1>
+                    {
+                        //
+                    }
                     <div className="card my-5">
                         <div className="card-body">
                             <h5 className="card-title">First Publication</h5>
                             <h6 className="card-subtitle mb-2 ">Category: Action</h6>
                             <p className={"card-text"}>
-                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugit iste nobis possimus? Ad culpa dignissimos distinctio fuga incidunt ipsum, iure magni molestias odio pariatur perferendis quo quos reprehenderit velit vitae?
+                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugit iste nobis possimus? Ad
+                                culpa dignissimos distinctio fuga incidunt ipsum, iure magni molestias odio pariatur
+                                perferendis quo quos reprehenderit velit vitae?
                             </p>
                         </div>
                     </div>
@@ -49,7 +55,9 @@ const Publications = () => {
                             <h5 className="card-title">Second Publication</h5>
                             <h6 className="card-subtitle mb-2 ">Category: Suspense</h6>
                             <p className={"card-text"}>
-                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugit iste nobis possimus? Ad culpa dignissimos distinctio fuga incidunt ipsum, iure magni molestias odio pariatur perferendis quo quos reprehenderit velit vitae?
+                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugit iste nobis possimus? Ad
+                                culpa dignissimos distinctio fuga incidunt ipsum, iure magni molestias odio pariatur
+                                perferendis quo quos reprehenderit velit vitae?
                             </p>
                         </div>
                     </div>
@@ -58,7 +66,9 @@ const Publications = () => {
                             <h5 className="card-title">Third Publication</h5>
                             <h6 className="card-subtitle mb-2 ">Category: Anime</h6>
                             <p className={"card-text"}>
-                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugit iste nobis possimus? Ad culpa dignissimos distinctio fuga incidunt ipsum, iure magni molestias odio pariatur perferendis quo quos reprehenderit velit vitae?
+                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugit iste nobis possimus? Ad
+                                culpa dignissimos distinctio fuga incidunt ipsum, iure magni molestias odio pariatur
+                                perferendis quo quos reprehenderit velit vitae?
                             </p>
                         </div>
                     </div>
