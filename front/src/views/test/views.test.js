@@ -15,7 +15,7 @@ describe('renders test in views', () => {
         userName: "sebastian cano",
         userEmail: "sebas.cano1036@gmail.com",
         photoURL: "https://lh3.googleusercontent.com/a/AATXAJy86dPBpC-LgdzOV4B7mcHbkRdPoUGPWDQv-9L6=s96-c",
-        authenticated: false
+        authenticated: true
     }
 
     const dummyCount = {
@@ -61,18 +61,26 @@ describe('renders test in views', () => {
         fireEvent.click(button)
     })
 
-    /*test('testing App', () => {
+   /* test('testing App', () => {
+        const history = createMemoryHistory()
         const logOutUser = jest.fn();
-        const {getByTestId} = render(<App user={dummyUser} />);
+        const {getByTestId} = render(
+            <App user={dummyUser}/>
+        );
     })*/
 
-    /*test('testing header', () => {
+    test('testing header', () => {
+        const history = createMemoryHistory()
         const logOutUser = jest.fn();
-        const {getByTestId} = render(<Header user={dummyUser} logOutUser={logOutUser}/>);
+        const {getByTestId} = render(
+            <Router history={history}>
+                <Header user={dummyUser} logOutUser={logOutUser}/>
+            </Router>
+        );
         const button = getByTestId("btn-test");
         fireEvent.click(button)
-        expect(logOutUser).toHaveBeenCalled();
-    })*/
+
+    })
     test('testing footer', () => {
         const {getByText} = render(<Footer/>);
         expect(getByText(/Movies Blog App 2021 by Group 03./).textContent).toEqual("© Movies Blog App 2021 by Group 03.");
