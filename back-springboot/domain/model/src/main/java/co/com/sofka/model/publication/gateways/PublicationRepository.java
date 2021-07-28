@@ -4,4 +4,5 @@ import co.com.sofka.model.publication.Comment;
 
 public interface PublicationRepository {
     Comment addComment(Comment comment);
+    void deleteComment(String id);
 }

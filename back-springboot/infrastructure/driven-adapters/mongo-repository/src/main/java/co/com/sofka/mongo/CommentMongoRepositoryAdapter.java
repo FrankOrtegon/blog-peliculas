@@ -21,11 +21,6 @@ implements PublicationRepository
         super(repository, mapper, d -> mapper.map(d, CommentEntity.class));
     }
 
- /*   @Override
-    public Comment addComment(Comment comment) {
-        return this.repository.save(comment);
-    }*/
-
     @Override
     public Comment addComment(Comment comment) {
         CommentEntity commentEntity = new CommentEntity(comment.getIdPublication(), comment.getIdCount(), comment.getContent());
@@ -33,5 +28,10 @@ implements PublicationRepository
         Comment commentary = comment;
         commentary.setIdComment(commentEntity.getIdComment());
         return commentary;
+    }
+
+    @Override
+    public void deleteComment(String id) {
+        this.repository.deleteById(id);
     }
 }
