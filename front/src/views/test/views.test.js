@@ -1,5 +1,5 @@
 import React from "react";
-import {fireEvent, render} from "@testing-library/react";
+import {fireEvent, render, screen} from "@testing-library/react";
 import {Footer} from "../layout/Footer";
 import {Profile} from "../pages/users/Profile";
 import {Header} from "../layout/Header";
@@ -7,7 +7,7 @@ import {App} from "../routes/App";
 import {LogIn} from "../pages/utils/Login";
 import {Home} from "../pages/utils/Home";
 import {Router} from "react-router-dom";
-
+import {createMemoryHistory} from 'history';
 
 describe('renders test in views', () => {
     const dummyUser = {
@@ -79,10 +79,12 @@ describe('renders test in views', () => {
     })
 
     test('testing home', () => {
+        const history = createMemoryHistory()
         const {getByText} = render(
-            <Router>
+            <Router history={history}>
                 <Home/>
             </Router>
         );
+        expect(getByText(/Welcome to the movie blog app/i).textContent).toEqual("Welcome to the movie blog app ")
     })
 })
