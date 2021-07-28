@@ -1,15 +1,25 @@
 import React from "react";
-import {fireEvent, render, screen} from "@testing-library/react";
+import {fireEvent, render} from "@testing-library/react";
 import {Footer} from "../layout/Footer";
 import {Profile} from "../pages/users/Profile";
 import {Header} from "../layout/Header";
-import {App} from "../routes/App";
 import {LogIn} from "../pages/utils/Login";
 import {Home} from "../pages/utils/Home";
 import {Router} from "react-router-dom";
 import {createMemoryHistory} from 'history';
+import NotFoundPage from "../pages/utils/NotFoundPage";
+
+
+jest.mock('../../infrastructure/services/firebase/config/auth', () => ({
+    logout: () => Promise.resolve({}),
+    signInWithGoogle: () => Promise.resolve({}),
+}));
+
 
 describe('renders test in views', () => {
+
+    const history = createMemoryHistory()
+
     const dummyUser = {
         userid: "HoPQghuxLxfbMVHYAviqkTIk2JK2",
         userName: "sebastian cano",
@@ -52,33 +62,49 @@ describe('renders test in views', () => {
         });
 
         expect(history.push).toHaveBeenCalled();
+
     })
 
-    test('testing Login', () => {
-        const loginUser = jest.fn();
-        const {getByTestId} = render(<LogIn loginUser={loginUser}/>);
+    test('testing Login', async () => {
+
+        const loginUser = jest.fn()
+
+        const {getByTestId} = render(<LogIn loginUser={loginUser}/>)
+
         const button = getByTestId("btn-test")
+
         fireEvent.click(button)
+
+        jest.useFakeTimers()
+
+        await Promise.resolve()
+
+        jest.useRealTimers()
+
+        expect(loginUser).toHaveBeenCalled()
     })
 
-   /* test('testing App', () => {
-        const history = createMemoryHistory()
-        const logOutUser = jest.fn();
-        const {getByTestId} = render(
-            <App user={dummyUser}/>
-        );
-    })*/
+    test('testing header', async () => {
 
-    test('testing header', () => {
-        const history = createMemoryHistory()
         const logOutUser = jest.fn();
+
         const {getByTestId} = render(
             <Router history={history}>
                 <Header user={dummyUser} logOutUser={logOutUser}/>
             </Router>
         );
+
         const button = getByTestId("btn-test");
+
         fireEvent.click(button)
+
+        jest.useFakeTimers()
+
+        await Promise.resolve()
+
+        jest.useRealTimers();
+
+        expect(logOutUser).toHaveBeenCalled()
 
     })
     test('testing footer', () => {
@@ -87,12 +113,20 @@ describe('renders test in views', () => {
     })
 
     test('testing home', () => {
-        const history = createMemoryHistory()
         const {getByText} = render(
             <Router history={history}>
                 <Home/>
             </Router>
         );
         expect(getByText(/Welcome to the movie blog app/i).textContent).toEqual("Welcome to the movie blog app ")
+    })
+
+    test('testing NotFoundPage', () => {
+        const {getByText} = render(
+            <Router history={history}>
+                <NotFoundPage/>
+            </Router>);
+        expect(getByText(/Page not found!./).textContent).toEqual("Uh Oh! Page not found! 404");
+
     })
 })
