@@ -7,7 +7,7 @@ import {logout} from "../../infrastructure/services/firebase/config/auth";
 import {logOutUser} from "../../application/actions/user";
 import alertify from "alertifyjs";
 
-const Header = ({user, logOutUser}) => {
+export const Header = ({user, logOutUser}) => {
 
     const logoutUser = (event) => {
         event.preventDefault()
@@ -34,7 +34,7 @@ const Header = ({user, logOutUser}) => {
                         <Link className="nav-item mr-3 btn btn-outline-light px-4" to={"/publications"}>
                             Publications <i className="bi bi-card-text"/>
                         </Link>
-                        <button className="nav-item mr-3 btn btn-outline-light px-4"
+                        <button className="nav-item mr-3 btn btn-outline-light px-4" data-testid={"btn-test"}
                                 onClick={(logoutUser)}>Log Out <i className="bi bi-door-open-fill"/>
                         </button>
                     </div> :

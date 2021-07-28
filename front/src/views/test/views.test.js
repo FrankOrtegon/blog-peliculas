@@ -1,31 +1,36 @@
 import React from "react";
 import {fireEvent, render} from "@testing-library/react";
-import Footer from "../layout/Footer";
+import {Footer} from "../layout/Footer";
 import {Profile} from "../pages/users/Profile";
+import {Header} from "../layout/Header";
+import {App} from "../routes/App";
+import {LogIn} from "../pages/utils/Login";
+import {Home} from "../pages/utils/Home";
+import {Router} from "react-router-dom";
 
 
 describe('renders test in views', () => {
+    const dummyUser = {
+        userid: "HoPQghuxLxfbMVHYAviqkTIk2JK2",
+        userName: "sebastian cano",
+        userEmail: "sebas.cano1036@gmail.com",
+        photoURL: "https://lh3.googleusercontent.com/a/AATXAJy86dPBpC-LgdzOV4B7mcHbkRdPoUGPWDQv-9L6=s96-c",
+        authenticated: false
+    }
+
+    const dummyCount = {
+        userid: "HoPQghuxLxfbMVHYAviqkTIk2JK2",
+        name: "Pancho",
+        phone: "3058935598",
+        plan: "false",
+    }
+
     test('testing profile', () => {
         const updateCount = jest.fn();
 
         const history = {
             push: jest.fn()
         };
-
-        const dummyUser = {
-            userid: "HoPQghuxLxfbMVHYAviqkTIk2JK2",
-            userName: "sebastian cano",
-            userEmail: "sebas.cano1036@gmail.com",
-            photoURL: "https://lh3.googleusercontent.com/a/AATXAJy86dPBpC-LgdzOV4B7mcHbkRdPoUGPWDQv-9L6=s96-c",
-            authenticated: false
-        }
-
-        const dummyCount = {
-            userid: "HoPQghuxLxfbMVHYAviqkTIk2JK2",
-            name: "Pancho",
-            phone: "3058935598",
-            plan: "false",
-        }
 
         const {getByTestId} = render(
             <Profile user={dummyUser} updateCount={updateCount} count={dummyCount} history={history}/>
@@ -49,9 +54,35 @@ describe('renders test in views', () => {
         expect(history.push).toHaveBeenCalled();
     })
 
+    test('testing Login', () => {
+        const loginUser = jest.fn();
+        const {getByTestId} = render(<LogIn loginUser={loginUser}/>);
+        const button = getByTestId("btn-test")
+        fireEvent.click(button)
+    })
+
+    /*test('testing App', () => {
+        const logOutUser = jest.fn();
+        const {getByTestId} = render(<App user={dummyUser} />);
+    })*/
+
+    /*test('testing header', () => {
+        const logOutUser = jest.fn();
+        const {getByTestId} = render(<Header user={dummyUser} logOutUser={logOutUser}/>);
+        const button = getByTestId("btn-test");
+        fireEvent.click(button)
+        expect(logOutUser).toHaveBeenCalled();
+    })*/
     test('testing footer', () => {
         const {getByText} = render(<Footer/>);
         expect(getByText(/Movies Blog App 2021 by Group 03./).textContent).toEqual("© Movies Blog App 2021 by Group 03.");
     })
 
+    test('testing home', () => {
+        const {getByText} = render(
+            <Router>
+                <Home/>
+            </Router>
+        );
+    })
 })
