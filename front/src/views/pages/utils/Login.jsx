@@ -9,7 +9,7 @@ import {loginUser} from "../../../application/actions/user";
 import {connect} from "react-redux";
 import alertify from "alertifyjs";
 
-const LogIn = ({loginUser}) => {
+export const LogIn = ({loginUser}) => {
 
     const loginWithGoogleUser = (event) => {
         event.preventDefault();
@@ -47,7 +47,7 @@ const LogIn = ({loginUser}) => {
                         <div className="card-body">
                             <h3 className="card-title text-center">log in with a social network</h3>
                             <hr className="my-4"/>
-                            <button className="btn btn-lg btn-danger btn-block" onClick={loginWithGoogleUser}>
+                            <button data-testid={"btn-test"} className="btn btn-lg btn-danger btn-block" onClick={loginWithGoogleUser}>
                                 <i className="bi bi-google"/> Log in with Google
                             </button>
                             <hr className="my-4"/>

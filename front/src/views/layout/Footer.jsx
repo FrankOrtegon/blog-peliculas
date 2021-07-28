@@ -1,6 +1,6 @@
 import React from 'react';
 
-function Footer() {
+export const Footer = () => {
     return (
         <footer className="pt-5" id={"footer"}>
             <div className="container text-center">

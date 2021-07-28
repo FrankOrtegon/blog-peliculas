@@ -11,7 +11,7 @@ import Profile from "../pages/users/Profile";
 import Publications from "../pages/post/Publications";
 
 
-const App = ({user}) => {
+export const App = ({user}) => {
 
     return (
         <Router>
