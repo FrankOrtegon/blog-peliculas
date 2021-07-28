@@ -40,11 +40,11 @@ public class CountEntity {
         this.name = name;
     }
 
-    public Phone getEmail() {
+    public Phone getPhone() {
         return phone;
     }
 
-    public void setEmail(Phone phone) {
+    public void setPhone(Phone phone) {
         this.phone = phone;
     }
 

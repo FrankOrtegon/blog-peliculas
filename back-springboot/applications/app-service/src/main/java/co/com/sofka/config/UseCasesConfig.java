@@ -3,6 +3,8 @@ package co.com.sofka.config;
 import co.com.sofka.model.count.gateways.CountRepository;
 import co.com.sofka.model.publication.gateways.PublicationRepository;
 import co.com.sofka.usecase.count.AddCountUseCase;
+import co.com.sofka.usecase.count.GetCountUseCase;
+import co.com.sofka.usecase.count.UpdateCountUseCase;
 import co.com.sofka.usecase.publication.AddCommentUseCase;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -22,6 +24,14 @@ public class UseCasesConfig {
 
     public AddCountUseCase addCountUseCase(CountRepository countRepository){
             return new AddCountUseCase(countRepository);
+    }
+
+    public UpdateCountUseCase updateCountUseCase(CountRepository countRepository){
+        return new UpdateCountUseCase(countRepository);
+    }
+
+    public GetCountUseCase getCountUseCase(CountRepository countRepository){
+        return new GetCountUseCase(countRepository);
     }
 
 }
