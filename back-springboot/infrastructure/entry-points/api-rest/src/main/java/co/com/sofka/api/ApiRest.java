@@ -88,7 +88,7 @@ public class ApiRest {
     }
 
     @DeleteMapping(path = "/delete/category/{id}")
-    public void deleteCategory(@PathVariable("id")IdCategory idCategory){
+    public void deleteCategory(@PathVariable("id") String idCategory){
         deleteCategoryUseCase.deleteCateogry(idCategory);
     }
 }

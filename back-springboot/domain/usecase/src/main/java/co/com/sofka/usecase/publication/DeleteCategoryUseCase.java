@@ -9,7 +9,7 @@ public class DeleteCategoryUseCase {
 
     private final CategoryRepository categoryRepository;
 
-    public void deleteCateogry(IdCategory idCategory){
+    public void deleteCateogry(String idCategory){
         categoryRepository.deleteByIdCateogry(idCategory);
     }
 }

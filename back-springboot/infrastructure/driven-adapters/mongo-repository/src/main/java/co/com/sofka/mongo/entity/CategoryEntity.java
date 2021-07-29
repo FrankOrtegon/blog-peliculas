@@ -9,22 +9,21 @@ import org.springframework.data.mongodb.core.mapping.Document;
 public class CategoryEntity {
 
     @Id
-    private IdCategory idCategory;
+    private String idCategory;
     private TypeCategory type;
-
     public CategoryEntity() {
     }
 
-    public CategoryEntity(IdCategory idCategory, TypeCategory type) {
+    public CategoryEntity(String idCategory, TypeCategory type) {
         this.idCategory = idCategory;
         this.type = type;
     }
 
-    public IdCategory getIdCategory() {
+    public String getIdCategory() {
         return idCategory;
     }
 
-    public void setIdCategory(IdCategory idCategory) {
+    public void setIdCategory(String idCategory) {
         this.idCategory = idCategory;
     }
 

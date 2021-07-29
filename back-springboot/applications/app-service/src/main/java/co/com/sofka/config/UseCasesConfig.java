@@ -10,6 +10,7 @@ import co.com.sofka.usecase.count.GetCountUseCase;
 import co.com.sofka.usecase.count.UpdateCountUseCase;
 import co.com.sofka.usecase.publication.AddCategoryUseCase;
 import co.com.sofka.usecase.publication.AddCommentUseCase;
+import co.com.sofka.usecase.publication.DeleteCategoryUseCase;
 import co.com.sofka.usecase.publication.UpdateCategoryUseCase;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -49,6 +50,10 @@ public class UseCasesConfig {
 
     public UpdateCategoryUseCase updateCategory(CategoryRepository categoryRepository){
         return new UpdateCategoryUseCase(categoryRepository);
+    }
+
+    public DeleteCategoryUseCase deleteCategory(CategoryRepository categoryRepository){
+        return new DeleteCategoryUseCase(categoryRepository);
     }
 
 }

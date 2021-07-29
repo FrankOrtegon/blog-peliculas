@@ -5,22 +5,22 @@ import co.com.sofka.model.publication.values.TypeCategory;
 
 public class CategoryDTO {
 
-    private IdCategory idCategory;
+    private String idCategory;
     private TypeCategory type;
 
     public CategoryDTO() {
     }
 
-    public CategoryDTO(IdCategory idCategory, TypeCategory type) {
+    public CategoryDTO(String idCategory, TypeCategory type) {
         this.idCategory = idCategory;
         this.type = type;
     }
 
-    public IdCategory getIdCategory() {
+    public String getIdCategory() {
         return idCategory;
     }
 
-    public void setIdCategory(IdCategory idCategory) {
+    public void setIdCategory(String idCategory) {
         this.idCategory = idCategory;
     }
 
