@@ -1,7 +1,9 @@
 let {addPublication} = require('../../../application/usecase/publication/addPublication')
 let {getPublication} = require('../../../application/usecase/publication/getPublication')
-const deletePublication = require('../../../application/usecase/publication/deletePublication')
-const updatePublication  = require('../../../application/usecase/publication/updatePublication')
+let {getByCategory} = require('../../../application/usecase/publication/getPublication')
+let {deletePublication} = require('../../../application/usecase/publication/deletePublication')
+let {updatePublication} = require('../../../application/usecase/publication/updatePublication')
+
 
 const mongoPublicationRepository = require ('../../repository/mongoPublicationRepository')
 
@@ -24,34 +26,35 @@ async function listPublications(req,res){
     }
 }
 
-async function removePublication(req, res){
-    
-    const id = req.params.id;
+async function removePublication(req, res) {
+    try {
+        const { id } = req.params;
         console.log(id)
-        try{
-            const publications = await deletePublication(id, mongoPublicationRepository.prototype )
-            console.log(publications)
-            res.json(publications)
-            
-        }catch(error){
-            res.json(error)
-        }
-    
+        res.json(await deletePublication(id, mongoPublicationRepository.prototype));
+    } catch (error) {
+        res.status(500).send(error);
+    }
 }
 
-async function modificPublication(req, res){
-    const body = req.body;
-    const id = req.params.id;
-        console.log(id, body)
-        try {
-            const modifiedPublication = await updatePublication(mongoPublicationRepository.prototype, id, body)
-            console.log(modifiedPublication)
-            res.json(modifiedPublication)
-
-        } catch (error) {
-            res.json(error)
-    
-        }
+async function modificPublication(req, res) {
+    try {
+        const { id, name, category, description } = req.body;
+        res.json(await updatePublication(id, name, category, description, mongoPublicationRepository.prototype))
+    } catch (error) {
+        res.status(500).send(error);
+    }
+}
+  
+async function getPublicationByCategory(req, res) {
+    try {
+        const { category } = req.params;
+        console.log(category)
+        res.json(await getByCategory(category, mongoPublicationRepository.prototype));
+    } catch (error) {
+        res.status(500).send(error);
+    }
 }
 
-module.exports ={createPublication, listPublications, removePublication, modificPublication}
+
+
+module.exports ={createPublication, listPublications, removePublication, modificPublication,getPublicationByCategory}

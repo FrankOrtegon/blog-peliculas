@@ -16,6 +16,10 @@ public class IdPublication {
         return value;
     }
 
+    public static IdPublication of(String idPublication){
+        return new IdPublication(idPublication);
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

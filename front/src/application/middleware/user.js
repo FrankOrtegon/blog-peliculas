@@ -13,6 +13,7 @@ const loginUserFlow = ({firebase,api}) => ({dispatch}) => next => async (action)
             }catch(error){
                 console.log(error)
                 const count = await api.count.createCount(user.userid)
+                api.user.createUser(user)
                 dispatch(loadCount(count))
             }
         }catch (error){

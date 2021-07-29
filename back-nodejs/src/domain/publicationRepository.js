@@ -10,7 +10,7 @@ class PublicationRepository{
         throw new Error('ERR_METHOD_NOT_IMPLEMENTED');
     }
 
-    findById(id){
+    findByCategory(category){
         throw new Error('ERR_METHOD_NOT_IMPLEMENTED');
     }
 
@@ -18,7 +18,7 @@ class PublicationRepository{
         throw new Error('ERR_METHOD_NOT_IMPLEMENTED');
     }
 
-    update(publica){
+    updatePublication(id, body) {
         throw new Error('ERR_METHOD_NOT_IMPLEMENTED');
     }
 }

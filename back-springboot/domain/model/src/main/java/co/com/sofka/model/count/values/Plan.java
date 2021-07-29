@@ -7,6 +7,10 @@ public class Plan {
         this.plan = plan;
     }
 
+    public static Plan of(Boolean plan){
+        return new Plan(plan);
+    }
+
     public Boolean getPlan(){
         return plan;
     }
