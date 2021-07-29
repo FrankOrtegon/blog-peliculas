@@ -15,4 +15,8 @@ public class TypeCategory {
     public String getType(){
         return type;
     }
+
+    public static TypeCategory of(String type){
+        return new TypeCategory(type);
+    }
 }
