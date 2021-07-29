@@ -14,7 +14,11 @@ class PublicationRepository{
         throw new Error('ERR_METHOD_NOT_IMPLEMENTED');
     }
 
-    remove(id){
+    delete(id){
+        throw new Error('ERR_METHOD_NOT_IMPLEMENTED');
+    }
+
+    update(publica){
         throw new Error('ERR_METHOD_NOT_IMPLEMENTED');
     }
 }
