@@ -1,6 +1,17 @@
+import {connect} from "react-redux";
 import React, {useState} from "react";
+import {getPublications} from '../../../application/selectors/publication'
+import {getCount} from '../../../application/selectors/user'
+import { loadPublications } from "../../../application/actions/publication";
+import { useEffect } from "react";
+import {bindActionCreators} from "redux";
 
-const Publications = () => {
+const Publications = ({count, publication, loadPublications}) => {
+    useEffect(()=>{
+        loadPublications()
+        console.log(publication,count)
+    }, [])
+
     const [category, setCategory] = useState('all');
 
     return (
@@ -78,4 +89,15 @@ const Publications = () => {
     )
 }
 
-export default Publications;
+const mapStateToProps = (state) => {
+    return {
+        publication: getPublications(state),
+        count: getCount(state),
+    }
+}
+
+const mapDispatchToProps = (dispatch) => {
+    return bindActionCreators({loadPublications}, dispatch);
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Publications);
