@@ -38,8 +38,8 @@ public class ApiRest {
 
     @PostMapping(path = "/add")
     public CommentDTO addCommentary(@RequestBody CommentDTO commentDTO) {
-        Comment comment = commentMapper.fromDTO(commentDTO);
-        return commentMapper.fromModel(addCommentUseCase.addComment(comment));
+        Comment comment = commentMapper.fromToModel(commentDTO);
+        return commentMapper.fromDTO(addCommentUseCase.addComment(comment));
     }
 
     @PostMapping(path = "/add/count")
@@ -64,4 +64,7 @@ public class ApiRest {
         User user = userMapper.fromModel(userDTO);
         return userMapper.fromDTO(addUserUseCase.addUser(user));
     }
+
+    @PostMapping(path = "/add/category")
+    public Cate
 }
