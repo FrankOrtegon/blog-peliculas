@@ -39,4 +39,7 @@ module.exports = class extends publicationRepository{
         return new publication(mongoosePublication._id,mongoosePublication.name,mongoosePublication.category,mongoosePublication.description )
            
     }
+
+
+   
 }
