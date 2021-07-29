@@ -1,6 +1,4 @@
 package co.com.sofka.model.publication;
-
-import co.com.sofka.model.publication.values.IdCategory;
 import co.com.sofka.model.publication.values.TypeCategory;
 import lombok.Builder;
 import lombok.Data;

@@ -1,6 +1,4 @@
 package co.com.sofka.mongo.entity;
-
-import co.com.sofka.model.publication.values.IdCategory;
 import co.com.sofka.model.publication.values.TypeCategory;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
