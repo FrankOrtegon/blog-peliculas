@@ -1,5 +1,7 @@
 package co.com.sofka.model.publication.values;
 
+import co.com.sofka.model.count.values.IdCount;
+
 import java.util.Objects;
 
 public class Content {
@@ -14,6 +16,9 @@ public class Content {
 
     public String getValue(){
         return value;
+    }
+    public static Content of(String content){
+        return new Content(content);
     }
 
     @Override

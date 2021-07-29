@@ -13,9 +13,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.ArgumentMatchers.any;
 
-@SpringBootTest
+
+
+@SpringBootTest(classes = AddCommentUseCase.class)
 class AddCommentUseCaseTest {
 
     @MockBean
@@ -26,17 +28,13 @@ class AddCommentUseCaseTest {
     @Test
     @DisplayName("Crear comentario")
     public void test(){
-        Comment comment = new Comment();
-        comment.setIdComment("1");
-        comment.setIdPublication(
-                new IdPublication("12")
-        );
-        comment.setIdCount(
-                new IdCount("123")
-        );
-        comment.setContent(
-                new Content("Si se puede")
-        );
+        Comment comment = new Comment("1",IdPublication.of("12"),IdCount.of("1233"),Content.of("Ojala"));
+
+        Mockito.when(publicationRepository.addComment(any())).thenReturn(comment);
+
+        Comment result = addCommentUseCase.addComment(comment);
+        Assertions.assertEquals(comment.getIdComment(),result.getIdComment());
+        Assertions.assertEquals(comment.getContent(),comment.getContent());
 
     }
 

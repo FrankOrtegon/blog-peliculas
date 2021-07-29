@@ -1,5 +1,7 @@
 package co.com.sofka.model.publication.values;
 
+import co.com.sofka.model.count.values.IdCount;
+
 import java.util.Objects;
 
 public class IdPublication {
@@ -14,6 +16,10 @@ public class IdPublication {
 
     public String getValue(){
         return value;
+    }
+
+    public static IdPublication of(String idPublication){
+        return new IdPublication(idPublication);
     }
 
     @Override
