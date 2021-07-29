@@ -4,6 +4,7 @@ import co.com.sofka.model.publication.Category;
 import co.com.sofka.model.publication.Comment;
 import co.com.sofka.model.publication.gateways.CategoryRepository;
 import co.com.sofka.model.publication.gateways.CommentRepository;
+import co.com.sofka.model.publication.values.IdCategory;
 import co.com.sofka.mongo.entity.CategoryEntity;
 import co.com.sofka.mongo.entity.CommentEntity;
 import co.com.sofka.mongo.entity.CountEntity;
@@ -37,5 +38,10 @@ public class CategoryMongoRepositoryAdapter extends AdapterOperations<CategoryEn
         categoryEntity.setType(category.getType());
         this.repository.save(categoryEntity);
         return category;
+    }
+
+    @Override
+    public void deleteByIdCateogry(IdCategory idCategory) {
+        this.repository.deleteById(idCategory.getValue());
     }
 }

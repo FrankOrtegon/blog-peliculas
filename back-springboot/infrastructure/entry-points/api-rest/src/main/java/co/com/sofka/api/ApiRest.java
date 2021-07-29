@@ -13,12 +13,14 @@ import co.com.sofka.model.count.User;
 import co.com.sofka.model.count.values.IdCount;
 import co.com.sofka.model.publication.Category;
 import co.com.sofka.model.publication.Comment;
+import co.com.sofka.model.publication.values.IdCategory;
 import co.com.sofka.usecase.count.AddCountUseCase;
 import co.com.sofka.usecase.count.AddUserUseCase;
 import co.com.sofka.usecase.count.GetCountUseCase;
 import co.com.sofka.usecase.count.UpdateCountUseCase;
 import co.com.sofka.usecase.publication.AddCategoryUseCase;
 import co.com.sofka.usecase.publication.AddCommentUseCase;
+import co.com.sofka.usecase.publication.DeleteCategoryUseCase;
 import co.com.sofka.usecase.publication.UpdateCategoryUseCase;
 import lombok.AllArgsConstructor;
 import org.springframework.http.MediaType;
@@ -38,6 +40,7 @@ public class ApiRest {
     private final CategoryMapper categoryMapper;
     private final AddCategoryUseCase addCategoryUseCase;
     private final UpdateCategoryUseCase updateCategoryUseCase;
+    private final DeleteCategoryUseCase deleteCategoryUseCase;
 
     private final AddUserUseCase addUserUseCase;
     private final UserMapper userMapper;
@@ -82,5 +85,10 @@ public class ApiRest {
     public CategoryDTO updateCategory(@RequestBody CategoryDTO categoryDTO){
         Category category = categoryMapper.fromToModel(categoryDTO);
         return categoryMapper.fromDTO(updateCategoryUseCase.updateCategory(category));
+    }
+
+    @DeleteMapping(path = "/delete/category/{id}")
+    public void deleteCategory(@PathVariable("id")IdCategory idCategory){
+        deleteCategoryUseCase.deleteCateogry(idCategory);
     }
 }
