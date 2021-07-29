@@ -10,11 +10,15 @@ class PublicationRepository{
         throw new Error('ERR_METHOD_NOT_IMPLEMENTED');
     }
 
-    findById(id){
+    findByCategory(category){
         throw new Error('ERR_METHOD_NOT_IMPLEMENTED');
     }
 
-    remove(id){
+    delete(id){
+        throw new Error('ERR_METHOD_NOT_IMPLEMENTED');
+    }
+
+    updatePublication(id, body) {
         throw new Error('ERR_METHOD_NOT_IMPLEMENTED');
     }
 }

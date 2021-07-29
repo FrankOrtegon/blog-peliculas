@@ -1,4 +1,6 @@
-async function  deletePublication (id, publicationRepository){
-  return publicationRepository.remove(id);
+async function deletePublication(id, publicationRepository) {
+  
+  return await publicationRepository.delete(id);
 }
-module.exports={deletePublication} 
+
+module.exports = { deletePublication };
