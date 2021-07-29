@@ -7,14 +7,14 @@ import {logout} from "../../infrastructure/services/firebase/config/auth";
 import {logOutUser} from "../../application/actions/user";
 import alertify from "alertifyjs";
 
-const Header = ({user, logOutUser}) => {
+export const Header = ({user, logOutUser}) => {
 
     const logoutUser = (event) => {
         event.preventDefault()
-        logout().then(()=>{
+        logout().then(() => {
             alertify.success("Log out success");
             logOutUser()
-        }).catch(error=>{
+        }).catch(error => {
             alertify.error(error.message);
         })
     }
@@ -23,29 +23,39 @@ const Header = ({user, logOutUser}) => {
         <nav className="navbar navbar-expand-lg navbar-dark bg-primary fixed-top">
             <div className="container">
                 <Link className="navbar-brand" to={"/"}>Movie Blog App <i className="bi bi-camera-reels"/></Link>
+                <button className="navbar-toggler" type={"button"} data-toggle="collapse" data-target="#navbar"
+                        aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
+                    <span className="navbar-toggler-icon"/>
+                </button>
                 {(user.authenticated) ?
-                    <div className="navbar-nav">
-                        <Link className="nav-item mr-3 btn btn-outline-light px-4" to={"/"}>
-                            Home <i className="bi bi-house"/>
-                        </Link>
-                        <Link className="nav-item mr-3 btn btn-outline-light px-4" to={"/profile"}>
-                            Profile <i className="bi bi-person-circle"/>
-                        </Link>
-                        <Link className="nav-item mr-3 btn btn-outline-light px-4" to={"/publications"}>
-                            Publications <i className="bi bi-card-text"/>
-                        </Link>
-                        <button className="nav-item mr-3 btn btn-outline-light px-4"
-                                onClick={(logoutUser)}>Log Out <i className="bi bi-door-open-fill"/>
-                        </button>
-                    </div> :
-                    <div className="navbar-nav">
-                        <Link className="nav-item mr-3 btn btn-outline-light px-4" to={"/"}>
-                            Home <i className="bi bi-house"/>
-                        </Link>
-                        <Link className="nav-item mr-3 btn btn-outline-light px-4" to={"/login"}>
-                            Log In <i className="bi bi-box-arrow-right"/>
-                        </Link>
-                    </div>}
+                    <div className="collapse navbar-collapse justify-content-end" id="navbar">
+                        <div className={"navbar-nav"}>
+                            <Link className="nav-item mr-3 btn btn-outline-light px-4" to={"/"}>
+                                Home <i className="bi bi-house"/>
+                            </Link>
+                            <Link className="nav-item mr-3 btn btn-outline-light px-4" to={"/profile"}>
+                                Profile <i className="bi bi-person-circle"/>
+                            </Link>
+                            <Link className="nav-item mr-3 btn btn-outline-light px-4" to={"/publications"}>
+                                Publications <i className="bi bi-card-text"/>
+                            </Link>
+                            <button className="nav-item mr-3 btn btn-outline-light px-4" data-testid={"btn-test"}
+                                    onClick={(logoutUser)}>Log Out <i className="bi bi-door-open-fill"/>
+                            </button>
+                        </div>
+                    </div>
+                    :
+                    <div className="collapse navbar-collapse justify-content-end" id="navbar">
+                        <div className={"navbar-nav"}>
+                            <Link className="nav-item mr-3 btn btn-outline-light px-4" to={"/"}>
+                                Home <i className="bi bi-house"/>
+                            </Link>
+                            <Link className="nav-item mr-3 btn btn-outline-light px-4" to={"/login"}>
+                                Log In <i className="bi bi-box-arrow-right"/>
+                            </Link>
+                        </div>
+                    </div>
+                }
             </div>
         </nav>
     )
