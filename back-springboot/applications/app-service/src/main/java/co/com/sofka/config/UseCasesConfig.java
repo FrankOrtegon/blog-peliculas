@@ -2,12 +2,15 @@ package co.com.sofka.config;
 
 import co.com.sofka.model.count.gateways.CountRepository;
 import co.com.sofka.model.count.gateways.UserRepository;
+import co.com.sofka.model.publication.gateways.CategoryRepository;
 import co.com.sofka.model.publication.gateways.CommentRepository;
 import co.com.sofka.usecase.count.AddCountUseCase;
 import co.com.sofka.usecase.count.AddUserUseCase;
 import co.com.sofka.usecase.count.GetCountUseCase;
 import co.com.sofka.usecase.count.UpdateCountUseCase;
+import co.com.sofka.usecase.publication.AddCategoryUseCase;
 import co.com.sofka.usecase.publication.AddCommentUseCase;
+import co.com.sofka.usecase.publication.UpdateCategoryUseCase;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.FilterType;
@@ -40,5 +43,12 @@ public class UseCasesConfig {
         return new AddUserUseCase(userRepository);
     }
 
+    public AddCategoryUseCase addCategory(CategoryRepository categoryRepository){
+        return new AddCategoryUseCase(categoryRepository);
+    }
+
+    public UpdateCategoryUseCase updateCategory(CategoryRepository categoryRepository){
+        return new UpdateCategoryUseCase(categoryRepository);
+    }
 
 }
