@@ -25,7 +25,7 @@ class AddCategoryUseCaseTest {
 
     @Test
     @DisplayName("Crear Categoria")
-    public void addCategory(){
+    void addCategory(){
         Category category = new Category("1", TypeCategory.of("Accion"));
 
         Mockito.when(categoryRepository.addCategory(any())).thenReturn(category);

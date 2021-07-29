@@ -12,6 +12,10 @@ public class Phone {
         }
     }
 
+    public static Phone of(String phone){
+        return new Phone(phone);
+    }
+
     public String getValue(){
         return value;
     }

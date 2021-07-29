@@ -1,6 +1,4 @@
 package co.com.sofka.api.publication;
-
-import co.com.sofka.model.publication.values.IdCategory;
 import co.com.sofka.model.publication.values.TypeCategory;
 
 public class CategoryDTO {
