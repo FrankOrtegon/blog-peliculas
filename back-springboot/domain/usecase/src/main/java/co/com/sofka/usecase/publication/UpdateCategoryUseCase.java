@@ -1,15 +1,16 @@
 package co.com.sofka.usecase.publication;
 
 import co.com.sofka.model.publication.Category;
-import co.com.sofka.model.publication.gateways.PublicationRepository;
+import co.com.sofka.model.publication.gateways.CategoryRepository;
+import co.com.sofka.model.publication.gateways.CommentRepository;
 import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
 public class UpdateCategoryUseCase {
 
-    private final PublicationRepository publicationRepository;
+    private final CategoryRepository categoryRepository;
 
     public Category updateCategory(Category category){
-        return publicationRepository.updateCategory(category);
+        return categoryRepository.updateCategory(category);
     }
 }

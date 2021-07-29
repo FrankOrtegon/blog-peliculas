@@ -2,7 +2,7 @@ package co.com.sofka.config;
 
 import co.com.sofka.model.count.gateways.CountRepository;
 import co.com.sofka.model.count.gateways.UserRepository;
-import co.com.sofka.model.publication.gateways.PublicationRepository;
+import co.com.sofka.model.publication.gateways.CommentRepository;
 import co.com.sofka.usecase.count.AddCountUseCase;
 import co.com.sofka.usecase.count.AddUserUseCase;
 import co.com.sofka.usecase.count.GetCountUseCase;
@@ -20,8 +20,8 @@ import org.springframework.context.annotation.FilterType;
         useDefaultFilters = false)
 public class UseCasesConfig {
 
-    public AddCommentUseCase addCommentary(PublicationRepository publicationRepository) {
-        return new AddCommentUseCase(publicationRepository);
+    public AddCommentUseCase addCommentary(CommentRepository commentRepository) {
+        return new AddCommentUseCase(commentRepository);
     }
 
     public AddCountUseCase addCountUseCase(CountRepository countRepository){

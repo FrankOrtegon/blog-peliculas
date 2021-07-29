@@ -2,7 +2,7 @@ package co.com.sofka.usecase.publication;
 
 import co.com.sofka.model.count.values.IdCount;
 import co.com.sofka.model.publication.Comment;
-import co.com.sofka.model.publication.gateways.PublicationRepository;
+import co.com.sofka.model.publication.gateways.CommentRepository;
 import co.com.sofka.model.publication.values.Content;
 import co.com.sofka.model.publication.values.IdPublication;
 import org.junit.jupiter.api.Assertions;
@@ -21,7 +21,7 @@ import static org.mockito.ArgumentMatchers.any;
 class AddCommentUseCaseTest {
 
     @MockBean
-    PublicationRepository publicationRepository;
+    CommentRepository commentRepository;
     @Autowired
     AddCommentUseCase addCommentUseCase;
 
@@ -30,7 +30,7 @@ class AddCommentUseCaseTest {
     public void test(){
         Comment comment = new Comment("1",IdPublication.of("12"),IdCount.of("1233"),Content.of("Ojala"));
 
-        Mockito.when(publicationRepository.addComment(any())).thenReturn(comment);
+        Mockito.when(commentRepository.addComment(any())).thenReturn(comment);
 
         Comment result = addCommentUseCase.addComment(comment);
         Assertions.assertEquals(comment.getIdComment(),result.getIdComment());
