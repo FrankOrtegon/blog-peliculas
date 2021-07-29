@@ -1,4 +1,4 @@
-package co.com.sofka.api;
+package co.com.sofka.api.count;
 
 import co.com.sofka.model.count.User;
 import org.springframework.stereotype.Component;

@@ -1,5 +1,11 @@
 package co.com.sofka.api;
 
+import co.com.sofka.api.count.CountDTO;
+import co.com.sofka.api.count.CountMapper;
+import co.com.sofka.api.count.UserDTO;
+import co.com.sofka.api.count.UserMapper;
+import co.com.sofka.api.publication.CommentDTO;
+import co.com.sofka.api.publication.CommentMapper;
 import co.com.sofka.model.count.Count;
 import co.com.sofka.model.count.User;
 import co.com.sofka.model.count.values.IdCount;
@@ -10,7 +16,6 @@ import co.com.sofka.usecase.count.GetCountUseCase;
 import co.com.sofka.usecase.count.UpdateCountUseCase;
 import co.com.sofka.usecase.publication.AddCommentUseCase;
 import lombok.AllArgsConstructor;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
