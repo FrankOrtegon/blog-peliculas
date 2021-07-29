@@ -8,5 +8,4 @@ public interface CommentRepository {
     Comment findByIdComment(String id);
     void deleteByIdComment(String id);
 
-
 }
