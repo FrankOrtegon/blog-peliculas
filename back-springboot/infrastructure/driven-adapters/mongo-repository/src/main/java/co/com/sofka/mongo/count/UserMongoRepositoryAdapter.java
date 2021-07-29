@@ -1,4 +1,4 @@
-package co.com.sofka.mongo;
+package co.com.sofka.mongo.count;
 
 import co.com.sofka.model.count.User;
 import co.com.sofka.model.count.gateways.UserRepository;

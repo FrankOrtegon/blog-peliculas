@@ -1,4 +1,4 @@
-package co.com.sofka.mongo;
+package co.com.sofka.mongo.count;
 
 import co.com.sofka.mongo.entity.UserEntity;
 import org.springframework.data.mongodb.repository.MongoRepository;

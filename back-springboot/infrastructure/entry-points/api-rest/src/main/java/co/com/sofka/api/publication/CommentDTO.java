@@ -1,4 +1,4 @@
-package co.com.sofka.api;
+package co.com.sofka.api.publication;
 
 import co.com.sofka.model.count.values.IdCount;
 import co.com.sofka.model.publication.values.Content;

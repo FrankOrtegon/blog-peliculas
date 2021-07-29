@@ -9,13 +9,13 @@ import lombok.Data;
 @Builder(toBuilder = true)
 public class Category {
 
-    private IdCategory idCategory;
+    private String idCategory;
     private TypeCategory type;
 
     public Category() {
     }
 
-    public Category(IdCategory idCategory, TypeCategory type) {
+    public Category(String idCategory, TypeCategory type) {
         this.idCategory = idCategory;
         this.type = type;
     }
