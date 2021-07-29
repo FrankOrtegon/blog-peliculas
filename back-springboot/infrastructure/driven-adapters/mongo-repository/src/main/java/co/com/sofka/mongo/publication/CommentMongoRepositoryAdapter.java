@@ -1,4 +1,4 @@
-package co.com.sofka.mongo;
+package co.com.sofka.mongo.publication;
 
 import co.com.sofka.model.publication.Comment;
 import co.com.sofka.model.publication.gateways.PublicationRepository;
