@@ -1,8 +1,10 @@
 package co.com.sofka.config;
 
 import co.com.sofka.model.count.gateways.CountRepository;
+import co.com.sofka.model.count.gateways.UserRepository;
 import co.com.sofka.model.publication.gateways.PublicationRepository;
 import co.com.sofka.usecase.count.AddCountUseCase;
+import co.com.sofka.usecase.count.AddUserUseCase;
 import co.com.sofka.usecase.count.GetCountUseCase;
 import co.com.sofka.usecase.count.UpdateCountUseCase;
 import co.com.sofka.usecase.publication.AddCommentUseCase;
@@ -32,6 +34,10 @@ public class UseCasesConfig {
 
     public GetCountUseCase getCountUseCase(CountRepository countRepository){
         return new GetCountUseCase(countRepository);
+    }
+
+    public AddUserUseCase addUserUseCase(UserRepository userRepository){
+        return new AddUserUseCase(userRepository);
     }
 
 }

@@ -1,7 +1,7 @@
 package co.com.sofka.model.count;
 
+import co.com.sofka.model.count.values.Email;
 import co.com.sofka.model.count.values.IdUser;
-import co.com.sofka.model.count.values.Name;
 import co.com.sofka.model.count.values.UrlPhoto;
 import lombok.Builder;
 import lombok.Data;
@@ -11,15 +11,15 @@ import lombok.Data;
 public class User {
 
     private IdUser idUser;
-    private Name name;
+    private Email email;
     private UrlPhoto urlPhoto;
 
     public User() {
     }
 
-    public User(IdUser idUser, Name name, UrlPhoto urlPhoto) {
+    public User(IdUser idUser, Email email, UrlPhoto urlPhoto) {
         this.idUser = idUser;
-        this.name = name;
+        this.email = email;
         this.urlPhoto = urlPhoto;
     }
 }
