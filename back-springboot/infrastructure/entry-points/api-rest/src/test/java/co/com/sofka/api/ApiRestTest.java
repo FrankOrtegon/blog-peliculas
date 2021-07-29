@@ -41,7 +41,7 @@ class ApiRestTest {
     private MockMvc mockMvc;
 
     @Test
-    public void postComment() throws Exception{
+     void postComment() throws Exception{
 
         //Arrange
         Comment comment = new Comment("1",IdPublication.of("12"),IdCount.of("1233"),Content.of("Ojala"));

@@ -27,8 +27,7 @@ public class CategoryMongoRepositoryAdapter extends AdapterOperations<CategoryEn
     public Category addCategory(Category category) {
         CategoryEntity categoryEntity = new CategoryEntity(category.getIdCategory(), category.getType());
         this.repository.save(categoryEntity);
-        Category category1 = category;
-        return category1;
+        return category;
     }
 
     @Override
