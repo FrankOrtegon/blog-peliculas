@@ -26,8 +26,9 @@ export const loadPublicationsFailure = (error)=>({
     payload:error
 })
 
-export const addPublications = ()=>({
+export const addPublications = (publication)=>({
     type:ADD_PUBLICATIONS,
+    payload:publication
 })
 
 export const addPublicationsSuccess = (publication)=>({

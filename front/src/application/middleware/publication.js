@@ -30,9 +30,9 @@ const addPublicationFlow= ({api}) => ({dispatch})=>next => async (action) =>{
     if(action.type === ADD_PUBLICATIONS){
 
         try{
-            console.log(action.payload)
-            const publications = await api.publication.createPublication()
             
+            const publications = await api.publication.createPublication(action.payload)
+            console.log(publications)
             dispatch(addPublicationsSuccess(publications))
 
         }catch(error){

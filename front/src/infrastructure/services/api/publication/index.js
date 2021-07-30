@@ -1,17 +1,13 @@
+import axios from "axios";
+
 const functions = {
 
     loadPublication:()=>{
-        const publicOne =  [{
-            name:"nombre 1",
-            category:"terror",
-            description:"esta es la descripcion"
-        },{
-            name:"nombre 2",
-            category:"terror",
-            description:"esta es la descripcion"
-        }]
-
-        return publicOne;
+        axios.get('https://nameless-mountain-68003.herokuapp.com/api/publication/').then(response =>{
+            console.log(response)
+            const list = response.data;
+            console.log(list)
+        })
     },
     createPublication: (publication) => {
         return{

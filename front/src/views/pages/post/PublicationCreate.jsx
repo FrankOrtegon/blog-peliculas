@@ -1,12 +1,27 @@
 import {connect} from "react-redux";
 import React from "react";
 import {addPublications} from '../../../application/actions/publication';
+import {updatePublications} from '../../../application/actions/publication';
+import {deletePublications} from '../../../application/actions/publication';
 import { useEffect } from "react";
 import {bindActionCreators} from "redux";
 
-export const PublicationCreate = ({addPublications}) => {
+export const PublicationCreate = ({addPublications, updatePublications, deletePublications}) => {
     useEffect(()=>{
-        addPublications()
+        const publication = {
+            name: "Transportador por siempre",
+            category: "Terror",
+            description: "esta es la descripcion"
+        }
+        addPublications(publication)
+
+        const publicationSubmit ={
+            name: "Transportador",
+            category: "Accion",
+            description: "esta es la descripcion"
+        }
+        updatePublications(publicationSubmit)
+        deletePublications(publication)
     }, [])
 
     return (
@@ -49,7 +64,7 @@ export const PublicationCreate = ({addPublications}) => {
 }
 
 const mapDispatchToProps = (dispatch) => {
-    return bindActionCreators({addPublications}, dispatch);
+    return bindActionCreators({addPublications, updatePublications, deletePublications}, dispatch);
 }
 
 export default connect(null, mapDispatchToProps)(PublicationCreate);
