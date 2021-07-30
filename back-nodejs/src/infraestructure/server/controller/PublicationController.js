@@ -9,8 +9,8 @@ const mongoPublicationRepository = require ('../../repository/mongoPublicationRe
 
 async function createPublication (req,res){
     try{
-        const {name, category, description, image}=req.body
-        let publication=await addPublication(name, category, description, image, mongoPublicationRepository.prototype)
+        const {idCount, name, category, description, image}=req.body
+        let publication=await addPublication(idCount, name, category, description, image, mongoPublicationRepository.prototype)
         res.json(publication)
     }catch(error){
         res.status(500).send(error);
