@@ -8,7 +8,11 @@ public class UrlPhoto {
         this.url = url;
     }
 
-    public String getUrl(){
+    public String getUrl() {
         return url;
+    }
+
+    public static UrlPhoto of(String url){
+        return new UrlPhoto(url);
     }
 }

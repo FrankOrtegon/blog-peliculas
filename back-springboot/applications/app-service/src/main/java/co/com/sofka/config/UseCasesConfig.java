@@ -8,10 +8,7 @@ import co.com.sofka.usecase.count.AddCountUseCase;
 import co.com.sofka.usecase.count.AddUserUseCase;
 import co.com.sofka.usecase.count.GetCountUseCase;
 import co.com.sofka.usecase.count.UpdateCountUseCase;
-import co.com.sofka.usecase.publication.AddCategoryUseCase;
-import co.com.sofka.usecase.publication.AddCommentUseCase;
-import co.com.sofka.usecase.publication.DeleteCategoryUseCase;
-import co.com.sofka.usecase.publication.UpdateCategoryUseCase;
+import co.com.sofka.usecase.publication.*;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.FilterType;
@@ -28,8 +25,16 @@ public class UseCasesConfig {
         return new AddCommentUseCase(commentRepository);
     }
 
+    public UpdateCommentUseCase updateComment(CommentRepository commentRepository){
+        return new UpdateCommentUseCase(commentRepository);
+    }
+
+    public DeleteCommentUseCase deleteComment(CommentRepository commentRepository){
+        return new DeleteCommentUseCase(commentRepository);
+    }
+
     public AddCountUseCase addCountUseCase(CountRepository countRepository){
-            return new AddCountUseCase(countRepository);
+        return new AddCountUseCase(countRepository);
     }
 
     public UpdateCountUseCase updateCountUseCase(CountRepository countRepository){

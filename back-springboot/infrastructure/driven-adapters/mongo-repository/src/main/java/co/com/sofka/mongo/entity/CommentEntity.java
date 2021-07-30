@@ -1,6 +1,6 @@
 package co.com.sofka.mongo.entity;
 
-import co.com.sofka.model.count.values.IdCount;
+
 import co.com.sofka.model.publication.values.Content;
 import co.com.sofka.model.publication.values.IdPublication;
 import org.springframework.data.annotation.Id;
@@ -12,25 +12,33 @@ public class CommentEntity {
     @Id
     private String idComment;
     private IdPublication idPublication;
-    private IdCount idCount;
+    private String idCount;
     private Content content;
 
     public CommentEntity() {
     }
 
-    public CommentEntity(String idComment, IdPublication idPublication, IdCount idCount, Content content) {
+    public CommentEntity(String idComment, IdPublication idPublication, String idCount, Content content) {
         this.idComment = idComment;
         this.idPublication = idPublication;
         this.idCount = idCount;
         this.content = content;
     }
 
-    public CommentEntity(IdPublication idPublication, IdCount idCount, Content content) {
+    public CommentEntity(IdPublication idPublication, String idCount, Content content) {
         this.idPublication = idPublication;
         this.idCount = idCount;
         this.content = content;
     }
 
+
+    public String getIdCount() {
+        return idCount;
+    }
+
+    public void setIdCount(String idCount) {
+        this.idCount = idCount;
+    }
 
     public String getIdComment() {
         return idComment;
@@ -46,14 +54,6 @@ public class CommentEntity {
 
     public void setIdPublication(IdPublication idPublication) {
         this.idPublication = idPublication;
-    }
-
-    public IdCount getIdCount() {
-        return idCount;
-    }
-
-    public void setIdCount(IdCount idCount) {
-        this.idCount = idCount;
     }
 
     public Content getContent() {

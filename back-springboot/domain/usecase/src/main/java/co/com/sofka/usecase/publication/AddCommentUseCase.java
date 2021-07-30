@@ -6,12 +6,12 @@ import co.com.sofka.model.publication.gateways.CommentRepository;
 import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
-public class AddCommentUseCase{
+public class AddCommentUseCase {
 
     private final CommentRepository commentRepository;
 
-    public Comment addComment(Comment comment){
+
+    public Comment addCommentary(Comment comment) {
         return commentRepository.addComment(comment);
     }
-
 }

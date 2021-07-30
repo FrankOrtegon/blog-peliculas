@@ -1,7 +1,5 @@
 package co.com.sofka.model.publication.values;
 
-import co.com.sofka.model.count.values.IdCount;
-
 import java.util.Objects;
 
 public class IdPublication {

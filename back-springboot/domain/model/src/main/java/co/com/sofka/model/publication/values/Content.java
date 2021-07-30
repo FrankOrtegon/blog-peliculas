@@ -1,11 +1,10 @@
 package co.com.sofka.model.publication.values;
 
-import co.com.sofka.model.count.values.IdCount;
-
 import java.util.Objects;
 
 public class Content {
     private final String value;
+
 
     public Content(String value) {
         this.value = Objects.requireNonNull(value,"Content is required");

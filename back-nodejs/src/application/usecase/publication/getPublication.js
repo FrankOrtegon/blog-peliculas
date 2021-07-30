@@ -1,8 +1,14 @@
-const publication = require('../../../domain/publication')
-
-async function getPublication (publicationRepository){
-    let publications = await publicationRepository.findAll()
-    return publications.map(publica => new publication(publica._id, publica.name, publica.category, publica.description, publica.image))
+async function getByCategory(category, publicationRepository) {
+    if (!category) {
+        return {
+            errorMessage: "La categoria es necesaria",
+            success: false
+        }
+    }
+    return await publicationRepository.findByCategory(category);
 }
 
-module.exports = {getPublication}
+async function getPublication(publicationRepository) {
+    return await publicationRepository.findAll();
+}
+module.exports = {getPublication, getByCategory}

@@ -69,5 +69,3 @@ export const deletePublicationsFailure = (error)=>({
     type:DELETE_PUBLICATIONS_FAILURE,
     payload:error
 })
-
-

@@ -29,7 +29,7 @@ class UpdateCategoryUseCaseTest {
 
     @Test
     @DisplayName("Actualizar Categoria")
-    public void updateCategory(){
+     void updateCategory(){
         Category category = new Category("1", TypeCategory.of("Accion"));
 
         Mockito.when(categoryRepository.updateCategory(category)).thenReturn(category);

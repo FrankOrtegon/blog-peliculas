@@ -10,14 +10,14 @@ import { withRouter } from "react-router-dom";
 export const Profile = ({user, count, updateCount, history}) => {
 
     const [userEmail, setUserEmail] = useState(user.userEmail);
-    const [name, setName] = useState(count.name);
-    const [phone, setPhone] = useState(count.phone);
-    const [plan, setPlan] = useState(count.plan);
+    const [name, setName] = useState(count.name.value);
+    const [phone, setPhone] = useState(count.phone.value);
+    const [plan, setPlan] = useState(count.plan.plan);
 
     const updateCountUser = (event) => {
         event.preventDefault();
         const countSubmit = {
-            userid: count.userid,
+            idCount: count.idCount,
             name: name,
             phone: phone,
             plan: plan
