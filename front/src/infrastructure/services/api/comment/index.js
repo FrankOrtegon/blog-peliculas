@@ -1,42 +1,38 @@
-import { deleteComment } from "../../../../application/actions/comment";
-
 const functions = {
 
-    loadComment:()=>{
+    loadComment: () => {
         const commentOne = [{
-            idComment:"1",
-            content :"Primer comentario"
-        },{
-            idComment:"2",
-            content : "Segundo comentario"
+            idComment: "1",
+            content: "Primer comentario"
+        }, {
+            idComment: "2",
+            content: "Segundo comentario"
         }]
         return commentOne;
     },
 
-    addComment:()=>{
-        return{
-            idComment:"12",
-            idPublication:"1",
-            idCount:"12",
-            content:"Este es el comentario"
+    addComment: () => {
+        return {
+            idComment: "12",
+            idPublication: "1",
+            idCount: "12",
+            content: "Este es el comentario"
         }
     },
 
-    updateComment:(comment)=>{
+    updateComment: (comment) => {
         return {
-            idComment:comment.idComment,
+            idComment: comment.idComment,
             idPublication: comment.idPublication,
             idCount: comment.idCount,
             content: comment.content
         }
     },
 
-    deleteComment:(idComment)=>{
-        return{
-            
-        }
+    deleteComment: (idComment) => {
+        return {}
     }
-    
+
 }
 
 
