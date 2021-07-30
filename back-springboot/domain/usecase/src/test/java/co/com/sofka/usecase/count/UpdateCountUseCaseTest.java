@@ -28,7 +28,7 @@ class UpdateCountUseCaseTest {
     @Test
     @DisplayName("Update Count test")
     void test(){
-        Count count = new Count(IdCount.of("1"), Name.of("Sebastian"), Phone.of("3006548"), Plan.of(true));
+        Count count = new Count("1", Name.of("Sebastian"), Phone.of("3006548"), Plan.of(true));
 
         Mockito.when(countRepository.updateCount(any())).thenReturn(count);
 

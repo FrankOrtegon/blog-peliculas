@@ -8,7 +8,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 public class CountEntity {
 
     @Id
-    private IdCount idCount;
+    private String idCount;
     private Name name;
     private Phone phone;
     private Plan plan;
@@ -17,18 +17,18 @@ public class CountEntity {
 
     }
 
-    public CountEntity(IdCount idCount, Name name, Phone phone, Plan plan) {
+    public CountEntity(String idCount, Name name, Phone phone, Plan plan) {
         this.idCount = idCount;
         this.name = name;
         this.phone = phone;
         this.plan = plan;
     }
 
-    public IdCount getIdCount() {
+    public String getIdCount() {
         return idCount;
     }
 
-    public void setIdCount(IdCount idCount) {
+    public void setIdCount(String idCount) {
         this.idCount = idCount;
     }
 
