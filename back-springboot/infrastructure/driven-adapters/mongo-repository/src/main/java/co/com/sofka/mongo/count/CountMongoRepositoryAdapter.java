@@ -44,8 +44,8 @@ implements CountRepository {
     }
 
     @Override
-    public Count getCount(IdCount idCount) {
-        Optional<CountEntity> countEntity = this.repository.findById(idCount.getIdCount());
+    public Count getCount(String idCount) {
+        Optional<CountEntity> countEntity = this.repository.findById(idCount);
         Count count = new Count();
         count.setIdCount(countEntity.get().getIdCount());
         count.setName(countEntity.get().getName());
