@@ -18,7 +18,6 @@ const functions = {
             idCount:"12",
             content:"Este es el comentario"
         }
-
     }
     
 }

@@ -1,5 +1,5 @@
-import { addCommentSuccess, loadCommentFailure, loadCommentSuccess } from "../actions/comment";
-import { ADD_COMMENT, LOAD_COMMENT } from "../constants";
+import { addCommentSuccess, loadCommentFailure, loadCommentSuccess, updateCommentFailure, updateCommentSuccess } from "../actions/comment";
+import { ADD_COMMENT, LOAD_COMMENT, UPDATE_COMMENT } from "../constants";
 
 const loadCommentFlow = ({api}) => ({dispatch}) => next => async(action) =>{
     next(action);
@@ -27,9 +27,22 @@ const addCommentFlow = ({api}) => ({dispatch}) => next => async(action) =>{
     }
 }
 
+const updateCommentFlow = ({api}) => ({dispatch}) => next => async(action) => {
+    next(action)
+    if(action.type === UPDATE_COMMENT){
+        try{
+            const comment = await api.comment.updateComment(action.payload)
+            dispatch(updateCommentSuccess(comment))
+        }catch(error) {
+            dispatch(updateCommentFailure(error))
+        }
+    }
+}
+
 const middlewareComment =[
     loadCommentFlow,
     addCommentFlow,
+    updateCommentFlow,
 ]
 
 export default middlewareComment
