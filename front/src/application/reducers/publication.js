@@ -7,9 +7,9 @@ import { ADD_PUBLICATIONS,
     UPDATE_PUBLICATIONS,
     UPDATE_PUBLICATIONS_SUCCESS,
     UPDATE_PUBLICATIONS_FAILURE,
-    DELETE_PUBLICATIONS,
+    /* DELETE_PUBLICATIONS,
     DELETE_PUBLICATIONS_SUCCESS,
-    DELETE_PUBLICATIONS_FAILURE
+    DELETE_PUBLICATIONS_FAILURE */
 
 } from "../constants";
 
@@ -34,19 +34,21 @@ const reducer = (state = initialState, action) =>{
             publicationAdd.push(action.payload)
             return {...state, loading:false, publication:publicationAdd };
         case ADD_PUBLICATIONS_FAILURE:
-            return {...state};
+            return {...state, loading:false, error:action.payload};
         case UPDATE_PUBLICATIONS:
-            return {...state};
+            return {...state, loading:true};
         case UPDATE_PUBLICATIONS_SUCCESS:
-            return {...state};
+            const publicationUpdate = state.publication
+            publicationUpdate.push(action.payload)
+            return {...state, loading:false, publication:publicationUpdate };
         case UPDATE_PUBLICATIONS_FAILURE:
-            return {...state};
-        case DELETE_PUBLICATIONS:
-            return {...state};
+            return {...state, loading:false, error:action.payload };
+        /* case DELETE_PUBLICATIONS:
+            return {...state, loading:true};
         case DELETE_PUBLICATIONS_SUCCESS:
-            return {...state};
+            return {...state, loading:false, publication:deletePublication};
         case DELETE_PUBLICATIONS_FAILURE:
-            return {...state};
+            return {...state, loading:false, error:action.payload}; */
         default:
             return state;   
     }

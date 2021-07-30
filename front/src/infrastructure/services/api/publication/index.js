@@ -12,7 +12,29 @@ const functions = {
         }]
 
         return publicOne;
-    }
+    },
+    createPublication: (publication) => {
+        return{
+            id:publication.id,
+            name: publication.name,
+            category: publication.category,
+            description: publication.description
+        }
+    },
+    updatePublication: (publication) => {
+        return{
+            id:publication.id,
+            name: publication.name,
+            category: publication.category,
+            description: publication.description
+        }
+    },
+    deletePublication: (id) => {
+        return{
+            id:id
+        }
+    },
+
     
 }
 
