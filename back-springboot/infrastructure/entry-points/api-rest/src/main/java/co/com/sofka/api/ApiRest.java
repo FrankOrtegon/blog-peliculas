@@ -13,7 +13,6 @@ import co.com.sofka.model.count.User;
 import co.com.sofka.model.count.values.IdCount;
 import co.com.sofka.model.publication.Category;
 import co.com.sofka.model.publication.Comment;
-import co.com.sofka.model.publication.values.IdCategory;
 import co.com.sofka.usecase.count.AddCountUseCase;
 import co.com.sofka.usecase.count.AddUserUseCase;
 import co.com.sofka.usecase.count.GetCountUseCase;

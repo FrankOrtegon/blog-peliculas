@@ -27,7 +27,7 @@ class AddCommentUseCaseTest {
 
     @Test
     @DisplayName("Crear comentario")
-    public void test(){
+    void test(){
         Comment comment = new Comment("1",IdPublication.of("12"),IdCount.of("1233"),Content.of("Ojala"));
 
         Mockito.when(commentRepository.addComment(any())).thenReturn(comment);

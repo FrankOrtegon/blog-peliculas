@@ -2,7 +2,6 @@ package co.com.sofka.model.publication;
 
 import co.com.sofka.model.count.values.IdCount;
 import co.com.sofka.model.publication.values.Content;
-import co.com.sofka.model.publication.values.IdComment;
 import co.com.sofka.model.publication.values.IdPublication;
 import lombok.Builder;
 import lombok.Data;

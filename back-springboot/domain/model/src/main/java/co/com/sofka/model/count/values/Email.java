@@ -11,6 +11,9 @@ public class Email {
             throw new IllegalArgumentException("Email cannot be empty");
         }
     }
+    public static Email of(String email){
+        return new Email(email);
+    }
 
     public String getValue(){
         return value;
