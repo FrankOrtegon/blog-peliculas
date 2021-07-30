@@ -1,28 +1,22 @@
-import {connect} from "react-redux";
-import React from "react";
-import {addPublications} from '../../../application/actions/publication';
-import {updatePublications} from '../../../application/actions/publication';
-import {deletePublications} from '../../../application/actions/publication';
-import { useEffect } from "react";
-import {bindActionCreators} from "redux";
+import React, {useState} from "react";
 
-export const PublicationCreate = ({addPublications, updatePublications, deletePublications}) => {
-    useEffect(()=>{
-        const publication = {
-            name: "Transportador por siempre",
-            category: "Terror",
-            description: "esta es la descripcion"
-        }
-        addPublications(publication)
+export const PublicationCreate = ({idCount}) => {
 
-        const publicationSubmit ={
-            name: "Transportador",
-            category: "Accion",
-            description: "esta es la descripcion"
+    const [name, setName] = useState('');
+    const [category, setCategory] = useState('');
+    const [description, setDescription] = useState('');
+
+    const publicationCreateSubmit = () => {
+
+        const publicationObject = {
+            idCount: idCount,
+            name: name,
+            category: category,
+            description: description,
         }
-        updatePublications(publicationSubmit)
-        deletePublications(publication)
-    }, [])
+
+        console.log("se creo una publicacion", publicationObject)
+    }
 
     return (
         <div className="col-md-6 mx-auto">
@@ -34,16 +28,17 @@ export const PublicationCreate = ({addPublications, updatePublications, deletePu
                     <label className={"m-3"}>Name</label>
                     <input placeholder={"Name"}
                            className={"form-control"}
-                           name={"name"}/>
+                           name={"name"}
+                    value={name}
+                    onChange={event => setName(event.target.value)}/>
                     <label className={"m-3"}>Category</label>
-                    <select className="form-select form-control"
-                            name={"category"}
-                            >
-                        <option >Terror</option>
-                        <option >Action</option>
-                        <option >Comedy</option>
-                        <option >Anime</option>
-                        <option >Science fiction</option>
+                    <select className="custom-select"
+                            value={category}
+                            onChange={(event => setCategory(event.target.value))}>
+                        <option value="All">All</option>
+                        <option value="Action">Action</option>
+                        <option value="Anime">Anime</option>
+                        <option value="Suspense">Suspense</option>
                     </select>
                     <label className={"m-3"}>Description</label>
                     <input type={"text"}
@@ -52,7 +47,7 @@ export const PublicationCreate = ({addPublications, updatePublications, deletePu
                            name={"description"}/>
                     
                     <div className="text-center">
-                        <button onClick="" className="btn btn-success px-5 mt-4 ">Add <i
+                        <button onClick={publicationCreateSubmit} className="btn btn-success px-5 mt-4 ">Add <i
                             className="bi bi-plus-square"/>
                         </button>
                     </div>
@@ -63,8 +58,4 @@ export const PublicationCreate = ({addPublications, updatePublications, deletePu
     )
 }
 
-const mapDispatchToProps = (dispatch) => {
-    return bindActionCreators({addPublications, updatePublications, deletePublications}, dispatch);
-}
-
-export default connect(null, mapDispatchToProps)(PublicationCreate);
+export default PublicationCreate
