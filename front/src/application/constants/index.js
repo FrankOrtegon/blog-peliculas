@@ -20,3 +20,10 @@ export const UPDATE_PUBLICATIONS_FAILURE = '[publications] update publications f
 export const DELETE_PUBLICATIONS = '[publications] delete publications'
 export const DELETE_PUBLICATIONS_SUCCESS = '[publications] delete publications success'
 export const DELETE_PUBLICATIONS_FAILURE = '[publications] delete publications failure'
+
+export const LOAD_COMMENT = '[comment] comment'
+export const LOAD_COMMENT_SUCCESS = '[comment] comment success'
+export const LOAD_COMMENT_FAILURE = '[comment] comment failure'
+export const ADD_COMMENT = '[comment] add comment'
+export const ADD_COMMENT_SUCCESS = '[comment] add comment success'
+export const ADD_COMMENT_FAILURE = '[comment] add comment failure'
