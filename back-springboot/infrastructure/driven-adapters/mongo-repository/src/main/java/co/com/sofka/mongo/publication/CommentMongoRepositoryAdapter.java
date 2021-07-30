@@ -57,6 +57,7 @@ implements CommentRepository
         return findByIdComment(commentEntity.get().getIdComment());
     }
 
+    @Override
     public void deleteByIdComment(String id) {
         this.repository.deleteById(id);
     }
