@@ -1,54 +1,28 @@
 import axios from "axios";
 
 const functions = {
-    getCount: (userId) =>{
-        const idFake="intento3"
-        axios.get('https://blogmovie.herokuapp.com/api/get/count/'+idFake).then(response => {
-            console.log(response)
-            const count = response.data;
-            console.log(count)
-        })
-
-        return {
-            userid: userId,
-            name:"Pancho",
-            phone:"3058935598",
-            plan:false
-        }
+    getCount: async (userId) => {
+        console.log("get count")
+        const response = await axios.get('https://blogmovie.herokuapp.com/api/get/count/' + userId);
+        return response.data;
     },
-    createCount: (userId) => {
+    createCount: async (userId) => {
+        console.log("post count")
         const count = {
-            userid:userId,
-            name: "",
-            phone:"",
-            plan:false
+            idCount: userId,
+            name: "Nan",
+            phone: "Nan",
+            plan: false
         }
-        axios.post('https://blogmovie.herokuapp.com/api/add/count',{count}).then(response => {
-            console.log(response)
-            const data = response.data;
-            console.log(data)
-        })
-        return{
-            userid:userId,
-            name: "",
-            phone:"",
-            plan:false
-        }
+        const response = await axios.post('https://blogmovie.herokuapp.com/api/add/count', count);
+        return response.data
     },
-    updateCount: (count) => {
-
-        axios.put('https://blogmovie.herokuapp.com/api/update/count',{count}).then(response => {
-            console.log(response)
-            const data = response.data;
-            console.log(data)
-        })
-        return{
-            userid:count.userid,
-            name: count.name,
-            phone: count.phone,
-            plan: count.plan
-        }
-    },
+    updateCount: async (count) => {
+        console.log("put count")
+        const response = await axios.put('https://blogmovie.herokuapp.com/api/update/count', count);
+        return response.data
+    }
+    ,
 }
 
 export default functions
