@@ -18,6 +18,15 @@ const functions = {
             idCount:"12",
             content:"Este es el comentario"
         }
+    },
+
+    updateComment:(comment)=>{
+        return {
+            idComment:comment.idComment,
+            idPublication: comment.idPublication,
+            idCount: comment.idCount,
+            content: comment.content
+        }
     }
     
 }
