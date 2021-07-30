@@ -65,7 +65,7 @@ public class ApiRest {
 
     @GetMapping(path = "/get/count/{id}")
     public CountDTO getCount(@PathVariable("id") String idCount) {
-        return countMapper.fromDTO(getCountUseCase.getCount(new IdCount(idCount)));
+        return countMapper.fromDTO(getCountUseCase.getCount(idCount));
     }
 
     @PostMapping(path = "/add/user")
