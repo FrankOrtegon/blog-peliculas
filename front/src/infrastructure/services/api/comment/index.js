@@ -1,3 +1,5 @@
+import { deleteComment } from "../../../../application/actions/comment";
+
 const functions = {
 
     loadComment:()=>{
@@ -26,6 +28,12 @@ const functions = {
             idPublication: comment.idPublication,
             idCount: comment.idCount,
             content: comment.content
+        }
+    },
+
+    deleteComment:(idComment)=>{
+        return{
+            
         }
     }
     

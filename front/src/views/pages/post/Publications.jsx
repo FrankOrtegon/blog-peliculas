@@ -3,7 +3,7 @@ import React, {useState} from "react";
 import {getPublications} from '../../../application/selectors/publication'
 import {getCount} from '../../../application/selectors/user'
 import { loadPublications } from "../../../application/actions/publication";
-import { loadComment, addComment, updateComment } from "../../../application/actions/comment";
+import { loadComment, addComment, updateComment, deleteComment } from "../../../application/actions/comment";
 import { useEffect } from "react";
 import {bindActionCreators} from "redux";
 import { getComment } from "../../../application/selectors/comment";
@@ -14,6 +14,7 @@ const Publications = ({count, publication, loadPublications, comment, loadCommen
         loadComment()
         addComment()
         updateComment()
+        deleteComment()
         console.log(publication)
         console.log(comment)
     }, [])
@@ -104,7 +105,7 @@ const mapStateToProps = (state) => {
 }
 
 const mapDispatchToProps = (dispatch) => {
-    return bindActionCreators({loadPublications, loadComment, addComment, updateComment}, dispatch);
+    return bindActionCreators({loadPublications, loadComment, addComment, updateComment, deleteComment}, dispatch);
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Publications);
