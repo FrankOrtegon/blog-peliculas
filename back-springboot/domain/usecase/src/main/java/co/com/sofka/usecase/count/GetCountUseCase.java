@@ -8,7 +8,7 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class GetCountUseCase {
     private final CountRepository countRepository;
-    public Count getCount(IdCount idCount) {
+    public Count getCount(String idCount) {
         return countRepository.getCount(idCount);
     }
 }

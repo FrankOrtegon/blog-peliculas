@@ -9,6 +9,7 @@ import {connect} from "react-redux";
 import {getUser} from "../../application/selectors/user";
 import Profile from "../pages/users/Profile";
 import Publications from "../pages/post/Publications";
+import PublicationCreate from "../pages/post/PublicationCreate";
 
 
 export const App = ({user}) => {
@@ -22,6 +23,7 @@ export const App = ({user}) => {
                 <PublicRoute exact path={"/login"} component={LogIn} authenticated={(user.authenticated)}/>
                 <PrivateRoute exact path={"/profile"} component={Profile} authenticated={(user.authenticated)}/>
                 <PrivateRoute exact path={"/publications"} component={Publications} authenticated={(user.authenticated)}/>
+                <PublicRoute exact path={"/publication/create"} component={PublicationCreate} authenticated={(user.authenticated)}/>
                 <Route path={"*"} component={NotFoundPage}/>
             </Switch>
             <Footer/>

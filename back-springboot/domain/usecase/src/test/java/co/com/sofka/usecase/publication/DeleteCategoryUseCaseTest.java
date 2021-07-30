@@ -27,8 +27,8 @@ class DeleteCategoryUseCaseTest {
      void deleteCategory(){
         Category category = new Category("1", TypeCategory.of("Accion"));
 
-        //Mockito.when(categoryRepository.deleteByIdCateogry(category.getIdCategory())).thenReturn(null);
+        //Mockito.when(categoryRepository.deleteByIdCateogry("1")).thenReturn(null);
 
-        //Category result = deleteCategoryUseCase.deleteCateogry(category.getIdCategory());
+       // Category result = deleteCategoryUseCase.deleteCateogry(category.getIdCategory());
     }
 }

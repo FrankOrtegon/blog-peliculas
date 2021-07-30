@@ -10,10 +10,10 @@ import {
 
 const initialState = {
     user: {
-        authenticated:false
+        authenticated: false
     },
-    count:{
-        plan:false
+    count: {
+        plan: {plan: false}
     },
     error: null
 };
@@ -23,13 +23,13 @@ const reducer = (state = initialState, action) => {
         case LOGIN_USER:
             return {...state};
         case LOGIN_USER_SUCCESS:
-            return { ...state,user: action.payload, error: null };
+            return {...state, user: action.payload, error: null};
         case LOGIN_USER_FAILURE:
             return {...state, error: action.payload};
         case LOGOUT_USER:
-            return {user: initialState.user, count: initialState.count ,error: null};
+            return {user: initialState.user, count: initialState.count, error: null};
         case LOAD_COUNT:
-            return {...state, count: action.payload, error:null};
+            return {...state, count: action.payload, error: null};
         case UPDATE_COUNT:
             return {...state};
         case UPDATE_COUNT_SUCCESS:
