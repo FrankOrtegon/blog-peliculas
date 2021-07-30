@@ -9,11 +9,11 @@ module.exports = class extends publicationRepository{
     }
 
     async save(publicationEntity){
-        const {name, category, description} = publicationEntity
+        const {idCount, name, category, description} = publicationEntity
 
-        const mongoosePublication = new publicationSchema({name, category, description})
+        const mongoosePublication = new publicationSchema({idCount, name, category, description})
         await mongoosePublication.save()
-        return new publication(mongoosePublication._id,mongoosePublication.name,mongoosePublication.category,mongoosePublication.description )
+        return new publication( mongoosePublication._id, mongoosePublication.idCount,mongoosePublication.name,mongoosePublication.category,mongoosePublication.description )
     }
 
     async findAll(){
