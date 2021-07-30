@@ -16,6 +16,9 @@ public class Content {
     public String getValue(){
         return value;
     }
+    public static Content of(String content){
+        return new Content(content);
+    }
 
     @Override
     public boolean equals(Object o) {

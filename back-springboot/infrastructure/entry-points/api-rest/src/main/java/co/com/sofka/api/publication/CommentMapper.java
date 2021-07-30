@@ -1,4 +1,4 @@
-package co.com.sofka.api;
+package co.com.sofka.api.publication;
 
 import co.com.sofka.model.publication.Comment;
 import org.springframework.stereotype.Component;

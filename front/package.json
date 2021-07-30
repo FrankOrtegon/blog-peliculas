@@ -45,6 +45,8 @@
     ]
   },
   "devDependencies": {
-    "alertify.js": "^1.0.12"
+    "alertify.js": "^1.0.12",
+    "history": "^5.0.0",
+    "react-test-render": "^1.1.2"
   }
 }

@@ -3,17 +3,16 @@ import {connect} from "react-redux";
 import {getCount, getUser} from "../../../application/selectors/user";
 import {bindActionCreators} from "redux";
 import {updateCount} from "../../../application/actions/user";
-import {useHistory} from "react-router-dom";
-import alertify from "alertifyjs";
 
-const Profile = ({user, count, updateCount}) => {
+import alertify from "alertifyjs";
+import { withRouter } from "react-router-dom";
+
+export const Profile = ({user, count, updateCount, history}) => {
 
     const [userEmail, setUserEmail] = useState(user.userEmail);
     const [name, setName] = useState(count.name);
     const [phone, setPhone] = useState(count.phone);
     const [plan, setPlan] = useState(count.plan);
-
-    let history = useHistory();
 
     const updateCountUser = (event) => {
         event.preventDefault();
@@ -46,7 +45,8 @@ const Profile = ({user, count, updateCount}) => {
                                    onChange={event => setUserEmail(event.target.value)}/>
                             <hr className="my-4"/>
                             <label>Name</label>
-                            <input className={"form-control"}
+                            <input data-testid={"input-test-name"}
+                                   className={"form-control"}
                                    value={name}
                                    onChange={event => setName(event.target.value)}/>
                             <hr className="my-4"/>
@@ -63,7 +63,7 @@ const Profile = ({user, count, updateCount}) => {
                                 <option value={false}>No premium</option>
                             </select>
                             <hr className="my-4"/>
-                            <button onClick={updateCountUser} className="btn btn-primary px-5 mt-4 ">
+                            <button data-testid={"btn-test"} onClick={updateCountUser} className="btn btn-primary px-5 mt-4 ">
                                 Update Count <i className="bi bi-pencil-square"/>
                             </button>
                         </div>
@@ -85,4 +85,4 @@ const mapDispatchToProps = (dispatch) => {
     return bindActionCreators({updateCount}, dispatch);
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Profile);
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(Profile));

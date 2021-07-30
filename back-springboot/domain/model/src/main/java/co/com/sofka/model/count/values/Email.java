@@ -6,15 +6,16 @@ public class Email {
     private final String value;
 
     public Email(String value) {
-        this.value = Objects.requireNonNull(value, "email is required");
-        if (this.value.isEmpty()){
-            throw new IllegalArgumentException("email cannot be empty");
+        this.value = Objects.requireNonNull(value,"Email is required");
+        if(this.value.isEmpty()){
+            throw new IllegalArgumentException("Email cannot be empty");
         }
+    }
+    public static Email of(String email){
+        return new Email(email);
     }
 
     public String getValue(){
         return value;
     }
-
-
 }

@@ -1,8 +1,8 @@
-package co.com.sofka.mongo;
+package co.com.sofka.mongo.publication;
 
 
 import co.com.sofka.model.publication.Comment;
-import co.com.sofka.model.publication.gateways.PublicationRepository;
+import co.com.sofka.model.publication.gateways.CommentRepository;
 import co.com.sofka.mongo.entity.CommentEntity;
 import co.com.sofka.mongo.helper.AdapterOperations;
 import org.reactivecommons.utils.ObjectMapper;
@@ -12,7 +12,7 @@ import java.util.Optional;
 
 @Repository
 public class CommentMongoRepositoryAdapter extends AdapterOperations<CommentEntity,CommentEntity, String, CommentMongoDBRepository>
-implements PublicationRepository
+implements CommentRepository
 {
 
     public CommentMongoRepositoryAdapter(CommentMongoDBRepository repository, ObjectMapper mapper) {
@@ -23,7 +23,6 @@ implements PublicationRepository
          */
         super(repository, mapper, d -> mapper.map(d, CommentEntity.class));
     }
-
 
     @Override
     public Comment addComment(Comment comment) {
@@ -56,6 +55,10 @@ implements PublicationRepository
         commentEntity.get().setContent(comment.getContent());
         repository.save(commentEntity.get());
         return findByIdComment(commentEntity.get().getIdComment());
+    }
+
+    public void deleteByIdComment(String id) {
+        this.repository.deleteById(id);
     }
 
 }
