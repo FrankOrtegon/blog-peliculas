@@ -1,17 +1,15 @@
 package co.com.sofka.usecase.publication;
 
-
 import co.com.sofka.model.publication.Comment;
 import co.com.sofka.model.publication.gateways.CommentRepository;
 import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
-public class AddCommentUseCase {
+public class UpdateCommentUseCase {
 
     private final CommentRepository commentRepository;
 
-
-    public Comment addCommentary(Comment comment) {
-        return commentRepository.addComment(comment);
+    public Comment updateComment(Comment comment){
+        return commentRepository.updateComment(comment);
     }
 }

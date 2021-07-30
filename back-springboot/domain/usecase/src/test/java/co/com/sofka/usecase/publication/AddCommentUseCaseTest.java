@@ -1,6 +1,6 @@
 package co.com.sofka.usecase.publication;
 
-import co.com.sofka.model.count.values.IdCount;
+
 import co.com.sofka.model.publication.Comment;
 import co.com.sofka.model.publication.gateways.CommentRepository;
 import co.com.sofka.model.publication.values.Content;
@@ -28,11 +28,11 @@ class AddCommentUseCaseTest {
     @Test
     @DisplayName("Crear comentario")
     void test(){
-        Comment comment = new Comment("1",IdPublication.of("12"),IdCount.of("1233"),Content.of("Ojala"));
+        Comment comment = new Comment("1",IdPublication.of("12"),"1234",Content.of("Ojala"));
 
         Mockito.when(commentRepository.addComment(any())).thenReturn(comment);
 
-        Comment result = addCommentUseCase.addComment(comment);
+        Comment result = addCommentUseCase.addCommentary(comment);
         Assertions.assertEquals(comment.getIdComment(),result.getIdComment());
         Assertions.assertEquals(comment.getContent(),comment.getContent());
 

@@ -1,6 +1,6 @@
 package co.com.sofka.api.publication;
 
-import co.com.sofka.model.count.values.IdCount;
+
 import co.com.sofka.model.publication.values.Content;
 import co.com.sofka.model.publication.values.IdPublication;
 
@@ -8,16 +8,20 @@ public class CommentDTO {
 
     private String idComment;
     private IdPublication idPublication;
-    private IdCount idCount;
+    private String idCount;
     private Content content;
 
     public CommentDTO() {
     }
 
-    public CommentDTO(String idComment, IdPublication idPublication, IdCount idCount, Content content) {
+    public CommentDTO(String idComment, IdPublication idPublication, String idCount, Content content) {
         this.idComment = idComment;
         this.idPublication = idPublication;
         this.idCount = idCount;
+        this.content = content;
+    }
+
+    public CommentDTO(Content content) {
         this.content = content;
     }
 
@@ -37,11 +41,11 @@ public class CommentDTO {
         this.idPublication = idPublication;
     }
 
-    public IdCount getIdCount() {
+    public String getIdCount() {
         return idCount;
     }
 
-    public void setIdCount(IdCount idCount) {
+    public void setIdCount(String idCount) {
         this.idCount = idCount;
     }
 

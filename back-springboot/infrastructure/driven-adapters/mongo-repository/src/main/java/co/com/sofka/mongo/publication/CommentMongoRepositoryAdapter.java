@@ -1,6 +1,6 @@
 package co.com.sofka.mongo.publication;
 
-import co.com.sofka.model.publication.Category;
+
 import co.com.sofka.model.publication.Comment;
 import co.com.sofka.model.publication.gateways.CommentRepository;
 import co.com.sofka.mongo.entity.CommentEntity;
@@ -24,11 +24,9 @@ implements CommentRepository
         super(repository, mapper, d -> mapper.map(d, CommentEntity.class));
     }
 
-
-
     @Override
     public Comment addComment(Comment comment) {
-        CommentEntity commentEntity = new CommentEntity(comment.getIdPublication(), comment.getIdCount(), comment.getContent());
+        CommentEntity commentEntity = new CommentEntity(comment.getIdComment(),comment.getIdPublication(), comment.getIdCount(), comment.getContent());
         this.repository.save(commentEntity);
         Comment commentary = comment;
         commentary.setIdComment(commentEntity.getIdComment());
@@ -36,16 +34,31 @@ implements CommentRepository
     }
 
     @Override
-    public void deleteByIdComment(String id) {
-        this.repository.deleteById(id);
-    }
-
-
-    @Override
     public Comment findByIdComment(String id){
-       Optional<CommentEntity> commentEntity = this.repository.findById(id);
+        Optional<CommentEntity> commentEntity = this.repository.findById(id);
         Comment comment = new Comment(commentEntity.get().getIdComment(),commentEntity.get().getIdPublication(),commentEntity.get().getIdCount(),commentEntity.get().getContent());
         return comment;
+    }
+
+    @Override
+    public Comment save(Comment comment) {
+        CommentEntity commentEntity = new CommentEntity(comment.getIdComment(),comment.getIdPublication(), comment.getIdCount(), comment.getContent());
+        this.repository.save(commentEntity);
+        Comment commentary = comment;
+        commentary.setIdComment(commentEntity.getIdComment());
+        return commentary;
+    }
+
+    @Override
+    public Comment updateComment(Comment comment) {
+        Optional<CommentEntity> commentEntity = this.repository.findById(comment.getIdComment());
+        commentEntity.get().setContent(comment.getContent());
+        repository.save(commentEntity.get());
+        return findByIdComment(commentEntity.get().getIdComment());
+    }
+
+    public void deleteByIdComment(String id) {
+        this.repository.deleteById(id);
     }
 
 }

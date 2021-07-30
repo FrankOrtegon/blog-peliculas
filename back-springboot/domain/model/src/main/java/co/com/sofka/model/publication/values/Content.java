@@ -5,6 +5,7 @@ import java.util.Objects;
 public class Content {
     private final String value;
 
+
     public Content(String value) {
         this.value = Objects.requireNonNull(value,"Content is required");
         if (this.value.isEmpty()){

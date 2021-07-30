@@ -10,7 +10,7 @@ import co.com.sofka.api.publication.CommentDTO;
 import co.com.sofka.api.publication.CommentMapper;
 import co.com.sofka.model.count.Count;
 import co.com.sofka.model.count.User;
-import co.com.sofka.model.count.values.IdCount;
+
 import co.com.sofka.model.publication.Category;
 import co.com.sofka.model.publication.Comment;
 import co.com.sofka.usecase.count.AddCountUseCase;
@@ -19,6 +19,8 @@ import co.com.sofka.usecase.count.GetCountUseCase;
 import co.com.sofka.usecase.count.UpdateCountUseCase;
 import co.com.sofka.usecase.publication.AddCategoryUseCase;
 import co.com.sofka.usecase.publication.AddCommentUseCase;
+import co.com.sofka.usecase.publication.UpdateCommentUseCase;
+
 import co.com.sofka.usecase.publication.DeleteCategoryUseCase;
 import co.com.sofka.usecase.publication.UpdateCategoryUseCase;
 import lombok.AllArgsConstructor;
@@ -30,6 +32,7 @@ import org.springframework.web.bind.annotation.*;
 @AllArgsConstructor
 public class ApiRest {
     private final AddCommentUseCase addCommentUseCase;
+    private final UpdateCommentUseCase updateCommentUseCase;
     private final CommentMapper commentMapper;
 
     private final AddCountUseCase addCountUseCase;
@@ -48,7 +51,16 @@ public class ApiRest {
     @PostMapping(path = "/add")
     public CommentDTO addCommentary(@RequestBody CommentDTO commentDTO) {
         Comment comment = commentMapper.fromToModel(commentDTO);
-        return commentMapper.fromDTO(addCommentUseCase.addComment(comment));
+
+      return commentMapper.fromDTO(addCommentUseCase.addCommentary(comment));
+    }
+
+    @PutMapping(path = "/update")
+    public CommentDTO updateComment(@RequestBody CommentDTO commentDTO){
+        Comment comment = commentMapper.fromToModel(commentDTO);
+        comment = updateCommentUseCase.updateComment(comment);
+        addCommentUseCase.addCommentary(comment);
+        return commentMapper.fromDTO(comment);
     }
 
     @PostMapping(path = "/add/count")
