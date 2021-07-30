@@ -6,7 +6,19 @@ import {
     loginUserSuccess,
     logOutUser,
     updateCount, updateCountFailure,
-    updateCountSuccess
+    updateCountSuccess,
+    loadPublications,
+    loadPublicationsFailure, 
+    loadPublicationsSuccess,
+    addPublications,
+    addPublicationsSuccess,
+    addPublicationsFailure,
+    updatePublications,
+    updatePublicationsSuccess,
+    updatePublicationsFailure,
+    deletePublications,
+    deletePublicationsSuccess,
+    deletePublicationsFailure
 } from "../actions/user";
 
 describe('reducer user test functions', () => {
@@ -60,6 +72,24 @@ describe('reducer user test functions', () => {
         const action = loadCount(dummyCount)
         const state = reducer(initialState, action);
         expect(state).toEqual({...initialState, count: dummyCount})
+    })
+
+    test('reducer UPDATE_COUNT case', () => {
+        const action = updateCount(dummyCount)
+        const state = reducer(initialState, action);
+        expect(state).toEqual({...initialState})
+    })
+
+    test('reducer UPDATE_COUNT_SUCCESS case', () => {
+        const action = updateCountSuccess(dummyCount)
+        const state = reducer(initialState, action);
+        expect(state).toEqual({...initialState, count: dummyCount})
+    })
+
+    test('reducer UPDATE_COUNT_FAILURE case', () => {
+        const action = updateCountFailure("error update count")
+        const state = reducer(initialState, action);
+        expect(state).toEqual({...initialState, error: "error update count"})
     })
 
     test('reducer UPDATE_COUNT case', () => {
