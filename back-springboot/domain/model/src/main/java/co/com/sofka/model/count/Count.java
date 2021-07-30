@@ -1,7 +1,6 @@
 package co.com.sofka.model.count;
-import co.com.sofka.model.count.values.Email;
-import co.com.sofka.model.count.values.IdCount;
-import co.com.sofka.model.count.values.IdUser;
+import co.com.sofka.model.count.values.Phone;
+import co.com.sofka.model.count.values.Name;
 import co.com.sofka.model.count.values.Plan;
 import lombok.Builder;
 import lombok.Data;
@@ -10,18 +9,18 @@ import lombok.Data;
 @Builder(toBuilder = true)
 public class Count {
 
-    private IdCount idCount;
-    private IdUser idUser;
-    private Email email;
+    private String idCount;
+    private Name name;
+    private Phone phone;
     private Plan plan;
 
     public Count() {
     }
 
-    public Count(IdCount idCount, IdUser idUser, Email email, Plan plan) {
+    public Count(String idCount, Name name, Phone phone, Plan plan) {
         this.idCount = idCount;
-        this.idUser = idUser;
-        this.email = email;
+        this.name = name;
+        this.phone = phone;
         this.plan = plan;
     }
 }

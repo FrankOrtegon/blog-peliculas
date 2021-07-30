@@ -1,13 +1,15 @@
 package co.com.sofka.usecase.publication;
 
-import co.com.sofka.model.publication.gateways.PublicationRepository;
+import co.com.sofka.model.publication.gateways.CommentRepository;
 import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
 public class DeleteCommentUseCase {
-    private final PublicationRepository publicationRepository;
+
+    private final CommentRepository commentRepository;
 
     public void deleteCommentary(String id){
-        publicationRepository.deleteComment(id);
+        commentRepository.deleteByIdComment(id);
     }
+
 }

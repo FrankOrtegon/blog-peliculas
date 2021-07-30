@@ -5,6 +5,7 @@ import java.util.Objects;
 public class Content {
     private final String value;
 
+
     public Content(String value) {
         this.value = Objects.requireNonNull(value,"Content is required");
         if (this.value.isEmpty()){
@@ -14,6 +15,9 @@ public class Content {
 
     public String getValue(){
         return value;
+    }
+    public static Content of(String content){
+        return new Content(content);
     }
 
     @Override

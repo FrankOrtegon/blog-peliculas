@@ -1,6 +1,4 @@
 package co.com.sofka.model.publication;
-
-import co.com.sofka.model.publication.values.IdCategory;
 import co.com.sofka.model.publication.values.TypeCategory;
 import lombok.Builder;
 import lombok.Data;
@@ -9,13 +7,13 @@ import lombok.Data;
 @Builder(toBuilder = true)
 public class Category {
 
-    private IdCategory idCategory;
+    private String idCategory;
     private TypeCategory type;
 
     public Category() {
     }
 
-    public Category(IdCategory idCategory, TypeCategory type) {
+    public Category(String idCategory, TypeCategory type) {
         this.idCategory = idCategory;
         this.type = type;
     }

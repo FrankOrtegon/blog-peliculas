@@ -1,7 +1,7 @@
 import React from "react";
 import {Link} from "react-router-dom";
 
-const Home = () => {
+export const Home = () => {
     return (
         <div className="container text-center">
             <div className="row">
