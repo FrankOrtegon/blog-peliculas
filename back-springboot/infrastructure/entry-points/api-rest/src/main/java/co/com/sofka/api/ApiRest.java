@@ -17,16 +17,13 @@ import co.com.sofka.usecase.count.AddCountUseCase;
 import co.com.sofka.usecase.count.AddUserUseCase;
 import co.com.sofka.usecase.count.GetCountUseCase;
 import co.com.sofka.usecase.count.UpdateCountUseCase;
-import co.com.sofka.usecase.publication.AddCategoryUseCase;
-import co.com.sofka.usecase.publication.AddCommentUseCase;
-import co.com.sofka.usecase.publication.DeleteCommentUseCase;
-import co.com.sofka.usecase.publication.UpdateCommentUseCase;
+import co.com.sofka.usecase.publication.*;
 
-import co.com.sofka.usecase.publication.DeleteCategoryUseCase;
-import co.com.sofka.usecase.publication.UpdateCategoryUseCase;
 import lombok.AllArgsConstructor;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @CrossOrigin(origins = "*")
@@ -38,6 +35,7 @@ public class ApiRest {
     private final DeleteCommentUseCase deleteCommentUseCase;
     private final UpdateCommentUseCase updateCommentUseCase;
     private final CommentMapper commentMapper;
+    private final GetCommentUseCase getCommentUseCase;
 
     private final AddCountUseCase addCountUseCase;
     private final UpdateCountUseCase updateCountUseCase;
@@ -71,6 +69,11 @@ public class ApiRest {
     @DeleteMapping(path = "/delete/{id}")
     public void deleteComment(@PathVariable("id") String id){
         deleteCommentUseCase.deleteCommentary(id);
+    }
+
+    @GetMapping(path = "/get")
+    public List<CommentDTO> getAllComment(){
+        return commentMapper.fromCommentList(getCommentUseCase.getAllComment());
     }
 
     @PostMapping(path = "/add/count")

@@ -1,6 +1,8 @@
 const mongoose = require('mongoose')
 
 const publicationSchema = mongoose.Schema({
+   
+    idCount:{type:String},
 
     name:{type:String, require: [true, 'Nombre es obligatorio']},
 

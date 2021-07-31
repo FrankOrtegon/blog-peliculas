@@ -33,6 +33,10 @@ public class UseCasesConfig {
         return new DeleteCommentUseCase(commentRepository);
     }
 
+    public GetCommentUseCase getCommentUseCase(CommentRepository commentRepository){
+        return new GetCommentUseCase(commentRepository);
+    }
+
     public AddCountUseCase addCountUseCase(CountRepository countRepository){
         return new AddCountUseCase(countRepository);
     }
