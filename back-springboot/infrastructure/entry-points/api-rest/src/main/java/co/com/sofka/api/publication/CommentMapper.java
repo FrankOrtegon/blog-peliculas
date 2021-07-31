@@ -3,6 +3,10 @@ package co.com.sofka.api.publication;
 import co.com.sofka.model.publication.Comment;
 import org.springframework.stereotype.Component;
 
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+
 @Component
 public class CommentMapper {
 
@@ -22,6 +26,21 @@ public class CommentMapper {
         commentDTO.setIdCount(comment.getIdCount());
         commentDTO.setContent(comment.getContent());
         return commentDTO;
+    }
+
+    public List<CommentDTO> fromCommentList(List<Comment> collection) {
+        if (collection == null) {
+            return null;
+
+        }
+        List<CommentDTO> list = new ArrayList(collection.size());
+        Iterator listTracks = collection.iterator();
+
+        while(listTracks.hasNext()) {
+            Comment comment = (Comment) listTracks.next();
+            list.add(fromDTO(comment));
+        }
+        return list;
     }
 
 

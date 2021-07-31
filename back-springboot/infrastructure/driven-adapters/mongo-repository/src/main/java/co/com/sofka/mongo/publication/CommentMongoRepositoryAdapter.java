@@ -8,6 +8,8 @@ import co.com.sofka.mongo.helper.AdapterOperations;
 import org.reactivecommons.utils.ObjectMapper;
 import org.springframework.stereotype.Repository;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 @Repository
@@ -60,6 +62,21 @@ implements CommentRepository
     @Override
     public void deleteByIdComment(String id) {
         this.repository.deleteById(id);
+    }
+
+    @Override
+    public List<Comment> getAllComment() {
+       List<CommentEntity> commentEntities = repository.findAll();
+       List<Comment> comments = new ArrayList<>();
+       for(int i=0; i<commentEntities.size(); i++ ){
+          Comment comments2 = new Comment(commentEntities.get(i).getIdComment(),
+                  commentEntities.get(i).getIdPublication(),
+                  commentEntities.get(i).getIdCount(),
+                  commentEntities.get(i).getContent());
+          comments.add(comments2);
+
+       }
+        return comments;
     }
 
 }
