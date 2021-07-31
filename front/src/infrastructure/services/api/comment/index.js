@@ -11,12 +11,21 @@ const functions = {
         return commentOne;
     },
 
+<<<<<<< HEAD
+    addComment:(idComment)=>{
+        return{
+            idComment:idComment,
+            idPublication:"1",
+            idCount:"12",
+            content:"Este es el comentario"
+=======
     addComment: () => {
         return {
             idComment: "12",
             idPublication: "1",
             idCount: "12",
             content: "Este es el comentario"
+>>>>>>> f48aad578bc061ab5906cfeba29bdd0989b23465
         }
     },
 
@@ -29,8 +38,15 @@ const functions = {
         }
     },
 
+<<<<<<< HEAD
+    deleteComment:(idComment)=>{
+        return{
+           
+        }
+=======
     deleteComment: (idComment) => {
         return {}
+>>>>>>> f48aad578bc061ab5906cfeba29bdd0989b23465
     }
 
 }
