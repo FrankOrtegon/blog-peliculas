@@ -27,8 +27,9 @@ export const loadCommentFailure = (error) => ({
     payload: error
 })
 
-export const addComment = () => ({
+export const addComment = (comment) => ({
     type: ADD_COMMENT,
+    payload: comment,
 })
 
 export const addCommentSuccess = (comment) => ({

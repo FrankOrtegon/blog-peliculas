@@ -3,24 +3,12 @@ import axios from "axios";
 const functions = {
 
     loadPublication: async () => {
-        const response2 =  await axios.get('https://nameless-mountain-68003.herokuapp.com/api/publication/')
-        console.log(response2.data)
-       const response = [{
-            idCount:"TsOdQhKj0kNGF0aiNeJW4WxCGA22",
-            id: "asdasda",
-            name: "titulo",
-            category: "Anime",
-            description: "publication.descriptionaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
-        }]
-        return response
+        const response = await axios.get('https://nameless-mountain-68003.herokuapp.com/api/publication/')
+        return response.data
     },
-    createPublication: (publication) => {
-        return {
-            id: publication.id,
-            name: publication.name,
-            category: publication.category,
-            description: publication.description
-        }
+    createPublication: async (publication) => {
+        const response = await axios.post('https://nameless-mountain-68003.herokuapp.com/api/publication/', publication)
+        return response.data
     },
     updatePublication: (publication) => {
         return {
@@ -30,10 +18,12 @@ const functions = {
             description: publication.description
         }
     },
-    deletePublication: (id) => {
-        return {
-            id: id
-        }
+    deletePublication: async (idPublication) => {
+        await axios.delete('https://nameless-mountain-68003.herokuapp.com/api/publication/'+idPublication).then(() => {
+            return idPublication
+        }).catch(error=>{
+            return error
+        })
     },
 
 

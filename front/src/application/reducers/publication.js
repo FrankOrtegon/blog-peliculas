@@ -30,9 +30,7 @@ const reducer = (state = initialState, action) =>{
         case ADD_PUBLICATIONS:
             return {...state, loading:true};
         case ADD_PUBLICATIONS_SUCCESS:
-            const publicationAdd = state.publication
-            publicationAdd.push(action.payload)
-            return {...state, loading:false, publication:publicationAdd };
+            return {...state, loading:false};
         case ADD_PUBLICATIONS_FAILURE:
             return {...state, loading:false, error:action.payload};
         case UPDATE_PUBLICATIONS:

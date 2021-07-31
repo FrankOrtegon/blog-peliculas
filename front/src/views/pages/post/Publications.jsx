@@ -2,20 +2,22 @@ import {connect} from "react-redux";
 import React, {useState} from "react";
 import {getPublications} from '../../../application/selectors/publication'
 import {getCount} from '../../../application/selectors/user'
-import {loadPublications} from "../../../application/actions/publication";
+import {addPublications, deletePublications, loadPublications} from "../../../application/actions/publication";
 import {useEffect} from "react";
 import {bindActionCreators} from "redux";
 import PublicationSummary from "./PublicationSummary";
 import {PublicationCreate} from "./PublicationCreate";
+import {getComment} from "../../../application/selectors/comment";
+import {addComment, deleteComment, loadComment} from "../../../application/actions/comment";
 
 
-const Publications = ({count, publication, loadPublications}) => {
+const Publications = ({count, publication, comment, loadPublications, addPublications, loadComment, deletePublications, addComment, deleteComment}) => {
     useEffect(() => {
         loadPublications()
-        console.log(publication)
-    },[])
+        loadComment()
+    }, [loadComment, loadPublications])
 
-    const [category, setCategory] = useState('all');
+    const [category, setCategory] = useState('All');
 
     return (
         <div className="container">
@@ -50,10 +52,19 @@ const Publications = ({count, publication, loadPublications}) => {
                     <h1 className="my-5 text-center cover-heading mt-5 font-weight-bold">
                         {category} Publications <i className="bi bi-camera-reels"/>
                     </h1>
-                    {(count.plan.plan) ? <PublicationCreate idCount={count.idCount} /> : null
-                        }
-                    {(publication.length)? publication.map(element => {
-                        return (<PublicationSummary key={element.id} publication={element} idCount={count.idCount}/>)
+                    {(count.plan.plan) ?
+                        <PublicationCreate addPublications={addPublications} idCount={count.idCount}/> : null
+                    }
+                    {(publication.length) ? publication.map(element => {
+                        return ((element.category === category) || (category === "All")) ?
+                            <PublicationSummary
+                                key={element._id}
+                                publication={element}
+                                count={count}
+                                comment={comment}
+                                deletePublications={deletePublications}
+                                deleteComment={deleteComment}
+                                addComment={addComment}/> : null
                     }) : null}
                 </div>
             </div>
@@ -65,11 +76,19 @@ const mapStateToProps = (state) => {
     return {
         publication: getPublications(state),
         count: getCount(state),
+        comment: getComment(state),
     }
 }
 
 const mapDispatchToProps = (dispatch) => {
-    return bindActionCreators({loadPublications}, dispatch);
+    return bindActionCreators({
+        loadPublications,
+        addPublications,
+        loadComment,
+        deletePublications,
+        addComment,
+        deleteComment
+    }, dispatch);
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Publications);
