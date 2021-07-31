@@ -13,9 +13,9 @@ const functions = {
         return commentOne;
     },
 
-    addComment:()=>{
+    addComment:(idComment)=>{
         return{
-            idComment:"12",
+            idComment:idComment,
             idPublication:"1",
             idCount:"12",
             content:"Este es el comentario"
@@ -33,7 +33,7 @@ const functions = {
 
     deleteComment:(idComment)=>{
         return{
-            
+           
         }
     }
     
