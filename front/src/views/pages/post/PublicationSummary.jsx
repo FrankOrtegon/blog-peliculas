@@ -3,38 +3,49 @@ import {bindActionCreators} from "redux";
 import {deletePublications, loadPublications} from "../../../application/actions/publication";
 import {connect} from "react-redux";
 import {getComment} from "../../../application/selectors/comment";
+import CommentSummary from "../comment/CommentSummary";
+import CommentCreate from "../comment/CommentCreate";
 
-export const PublicationSummary = ({publication, idCount,deletePublications, comment}) => {
+export const PublicationSummary = ({publication, count, deletePublications, comment,addComment, deleteComment}) => {
 
     const deleteSubmit = () => {
-       // deletePublications(publication.id)
-        console.log("deleted publication:",publication.id)
+        deletePublications(publication._id)
     }
 
-  return(
-      <div className="card my-5">
-          <div className="card-body">
-              <h5 className="card-title">{publication.name}</h5>
-              <h6 className="card-subtitle mb-2 ">Category: {publication.category}</h6>
-              <p className={"card-text"}>
-                  {publication.description}
-              </p>
-              {(publication.idCount===idCount)?
-                  <button className={"btn btn-danger mr-1 px-5"} onClick={deleteSubmit}>Delete <i
-                      className="bi bi-trash"/>
-                  </button>
-                  :null}
-          </div>
-          {/*comment.length?
-              <CommentSummary  idCount={idCount}  />
-              :null
-              */}
-      </div>
-  )
+    return (
+        <div className="card my-5">
+            <div className="card-body">
+                <h5 className="card-title">Title: {publication.name}</h5>
+                <h6 className="card-subtitle mb-2 ">Category: {publication.category}</h6>
+                <p className={"card-text"}>
+                    Content: {publication.description}
+                </p>
+                {((publication.idCount === count.idCount) && count.plan.plan) ?
+                    <div>
+                        <button className={"btn btn-danger mr-1 px-5"} onClick={deleteSubmit}>Delete <i
+                            className="bi bi-trash"/>
+                        </button>
+                        <button className={"btn btn-info mr-1 px-5"} onClick={deleteSubmit}>Update <i
+                            className="bi bi-trash"/>
+                        </button>
+                    </div>
+                    : null}
+                <hr className="my-4"/>
+                {(count.plan.plan)?
+                    <CommentCreate addComment={addComment} count={count} idPublication={publication._id} />
+                    :null}
+                {comment.length ? comment.map(element => {
+                    return (element.idPublication.value === publication._id) ?
+                        <CommentSummary key={element.idComment} count={count} comment={element} deleteComment={deleteComment}/>
+                        : null
+                }) : null}
+            </div>
+        </div>
+    )
 }
 
 const mapDispatchToProps = (dispatch) => {
-    return bindActionCreators({loadPublications,deletePublications}, dispatch);
+    return bindActionCreators({loadPublications, deletePublications}, dispatch);
 }
 
 const mapStateToProps = (state) => {

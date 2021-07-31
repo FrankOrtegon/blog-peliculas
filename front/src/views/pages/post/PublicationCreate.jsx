@@ -1,21 +1,22 @@
 import React, {useState} from "react";
+import alertify from "alertifyjs";
 
-export const PublicationCreate = ({idCount}) => {
+export const PublicationCreate = ({idCount, addPublications}) => {
 
     const [name, setName] = useState('');
-    const [category, setCategory] = useState('');
+    const [category, setCategory] = useState('All');
     const [description, setDescription] = useState('');
 
-    const publicationCreateSubmit = () => {
-
+    const publicationCreateSubmit = (event) => {
+        event.preventDefault();
         const publicationObject = {
             idCount: idCount,
             name: name,
             category: category,
             description: description,
         }
-
-        console.log("se creo una publicacion", publicationObject)
+        addPublications(publicationObject)
+        alertify.success("add publication success")
     }
 
     return (
@@ -24,10 +25,9 @@ export const PublicationCreate = ({idCount}) => {
                 <h3>Form to create Publication</h3>
             </div>
             <div className="card-footer">
-                <label className={"m-3"}>Name</label>
-                <input placeholder={"Name"}
+                <label className={"m-3"}>Title</label>
+                <input placeholder={"Title"}
                        className={"form-control"}
-                       name={"name"}
                        value={name}
                        onChange={event => setName(event.target.value)}/>
                 <label className={"m-3"}>Category</label>
@@ -43,7 +43,8 @@ export const PublicationCreate = ({idCount}) => {
                 <input type={"text"}
                        placeholder={"Description"}
                        className={"form-control"}
-                       name={"description"}/>
+                       value={description}
+                       onChange={event => setDescription(event.target.value)}/>
 
                 <div className="text-center">
                     <button onClick={publicationCreateSubmit} className="btn btn-success px-5 mt-4 ">Add <i
@@ -56,4 +57,4 @@ export const PublicationCreate = ({idCount}) => {
     )
 }
 
-export default PublicationCreate
+export default PublicationCreate;

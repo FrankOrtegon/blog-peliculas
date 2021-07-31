@@ -7,7 +7,7 @@ import {
     updatePublicationsSuccess,
     updatePublicationsFailure,
     deletePublicationsSuccess,
-    deletePublicationsFailure
+    deletePublicationsFailure, loadPublications
 } from "../actions/publication"
 
 const loadPublicationFlow = ({api}) => ({dispatch}) => next => async (action) => {
@@ -30,7 +30,7 @@ const addPublicationFlow = ({api}) => ({dispatch}) => next => async (action) => 
         try {
             const publications = await api.publication.createPublication(action.payload)
             dispatch(addPublicationsSuccess(publications))
-
+            dispatch(loadPublications())
         } catch (error) {
             dispatch(addPublicationsFailure(error))
         }
@@ -55,10 +55,9 @@ const deletePublicationFlow = ({api}) => ({dispatch}) => next => async (action) 
     next(action);
     if (action.type === DELETE_PUBLICATIONS) {
         try {
-            const publications = await api.publication.deletePublication()
-            console.log(publications)
+            const publications = await api.publication.deletePublication(action.payload)
             dispatch(deletePublicationsSuccess(publications))
-
+            dispatch(loadPublications())
         } catch (error) {
             dispatch(deletePublicationsFailure(error))
         }
