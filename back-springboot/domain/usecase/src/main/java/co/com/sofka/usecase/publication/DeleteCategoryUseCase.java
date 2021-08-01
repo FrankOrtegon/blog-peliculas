@@ -9,6 +9,6 @@ public class DeleteCategoryUseCase {
     private final CategoryRepository categoryRepository;
 
     public void deleteCateogry(String idCategory){
-        categoryRepository.deleteByIdCateogry(idCategory);
+        categoryRepository.deleteByIdCategory(idCategory);
     }
 }
