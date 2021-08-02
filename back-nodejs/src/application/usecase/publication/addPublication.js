@@ -7,7 +7,7 @@ async function addPublication(idCount, name, category, description,like, image, 
     }
 
 
-    const publi = new publication(null,idCount, name, category, description, voto, like, image)
+    const publi = new publication(null,idCount, name, category, description,  like, image)
     return publicationRepository.save(publi)
 }
 
