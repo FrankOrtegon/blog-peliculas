@@ -4,13 +4,12 @@ let {getByCategory} = require('../../../application/usecase/publication/getPubli
 let {deletePublication} = require('../../../application/usecase/publication/deletePublication')
 let {updatePublication} = require('../../../application/usecase/publication/updatePublication')
 
-
 const mongoPublicationRepository = require ('../../repository/mongoPublicationRepository')
 
 async function createPublication (req,res){
     try{
-        const {idCount, name, category, description}=req.body
-        let publication=await addPublication(idCount, name, category, description,  mongoPublicationRepository.prototype)
+        const {idCount, name, category, description, voto}=req.body
+        let publication=await addPublication(idCount, name, category, description, voto, mongoPublicationRepository.prototype)
         res.json(publication)
     }catch(error){
         res.status(500).send(error);
@@ -54,7 +53,6 @@ async function getPublicationByCategory(req, res) {
         res.status(500).send(error);
     }
 }
-
 
 
 module.exports ={createPublication, listPublications, removePublication, modificPublication,getPublicationByCategory}
