@@ -27,7 +27,7 @@ const Publications = ({count, publication, comment, loadPublications, addPublica
                         <div className="card-body">
                             <h3 className="card-title text-center">Instructions</h3>
                             <p className={"card-text"}>
-                            Como un buen amante del cine y las series, probablemente te gustará conocer el top de los mejores blogs de series y peliculas en Colombia.
+                            As a good lover of cinema and series, you will probably like to know where to see the best series and movies in Colombia.
                             </p>
                         </div>
                     </div>

@@ -21,15 +21,15 @@ export const PublicationSummary = ({publication, count, deletePublications, comm
                 <p className={"card-text"}>
                     Content: {publication.description}
                 </p>
-                <a href={publication.like}><button className={"btn btn-info px-5 float-right mr-1 px-5"} >View <i
-                            className="bi bi-play-btn"/>
-                        </button></a>
+                
                 {((publication.idCount === count.idCount) && count.plan.plan) ?
                     <div>
                         <button className={"btn btn-danger px-5 float-right mr-1 px-5"} onClick={deleteSubmit}>Delete <i
                             className="bi bi-trash"/>
                         </button>
-                        
+                        <a href={publication.like}><button className={"btn btn-info px-5 float-right mr-1 px-5"} >View <i
+                            className="bi bi-play-btn"/>
+                        </button></a>
                         
                     </div>
                     : null}
