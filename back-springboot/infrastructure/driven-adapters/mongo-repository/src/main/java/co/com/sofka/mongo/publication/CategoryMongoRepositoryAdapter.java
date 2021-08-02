@@ -40,7 +40,7 @@ public class CategoryMongoRepositoryAdapter extends AdapterOperations<CategoryEn
     }
 
     @Override
-    public void deleteByIdCateogry(String idCategory) {
+    public void deleteByIdCategory(String idCategory) {
         this.repository.deleteById(idCategory);
     }
 }

@@ -2,7 +2,6 @@ package co.com.sofka.usecase.publication;
 
 import co.com.sofka.model.publication.Category;
 import co.com.sofka.model.publication.gateways.CategoryRepository;
-import co.com.sofka.model.publication.values.IdCategory;
 import co.com.sofka.model.publication.values.TypeCategory;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -10,8 +9,6 @@ import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest(classes = DeleteCategoryUseCase.class)
 class DeleteCategoryUseCaseTest {
@@ -27,7 +24,7 @@ class DeleteCategoryUseCaseTest {
      void deleteCategory(){
         Category category = new Category("1", TypeCategory.of("Accion"));
 
-        //Mockito.when(categoryRepository.deleteByIdCateogry("1")).thenReturn(null);
+      //Mockito.when(categoryRepository.deleteByIdCategory("1")).thenReturn(null);
 
        // Category result = deleteCategoryUseCase.deleteCateogry(category.getIdCategory());
     }

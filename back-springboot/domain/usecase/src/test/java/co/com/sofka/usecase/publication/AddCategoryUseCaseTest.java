@@ -29,7 +29,9 @@ class AddCategoryUseCaseTest {
         Category category = new Category("1", TypeCategory.of("Accion"));
 
         Mockito.when(categoryRepository.addCategory(any())).thenReturn(category);
+
         Category result = addCategoryUseCase.addCategory(category);
+
         Assertions.assertEquals(category.getIdCategory(),result.getIdCategory());
         Assertions.assertEquals(category.getType(),result.getType());
     }

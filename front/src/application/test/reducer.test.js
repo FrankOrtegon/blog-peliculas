@@ -38,6 +38,13 @@ describe('reducer user test functions', () => {
         plan: "false",
     }
 
+    const dummyComment = {
+        idComment : "1",
+        idPublication : "2",
+        idCount : "3",
+        content : "Comentario"
+    }
+
     const initialState = {
         user: {authenticated: false},
         count: {plan: false},
@@ -108,5 +115,23 @@ describe('reducer user test functions', () => {
         const action = updateCountFailure("error update count")
         const state = reducer(initialState, action);
         expect(state).toEqual({...initialState, error: "error update count"})
+    })
+
+    test('reducer LOGIN_COMMENT case', () => {
+        const action = loginComment();
+        const state = reducer(initialState, action);
+        expect(state).toEqual({...initialState})
+    })
+
+    test('reducer LOGIN_COMMENT_SUCCESS case', () => {
+        const action = loginCommentSuccess(dummyComment)
+        const state = reducer(initialState, action);
+        expect(state).toEqual({...initialState, comment: dummyComment})
+    })
+
+    test('reducer LOGIN_COMMENT_FAILURE case', () => {
+        const action = loginCommentFailure("error comment login")
+        const state = reducer(initialState, action);
+        expect(state).toEqual({...initialState, error: "error comment login"})
     })
 })

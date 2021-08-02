@@ -1,4 +1,13 @@
-import { addCommentSuccess, deleteCommemtSuccess, deleteCommentFailure, loadCommentFailure, loadCommentSuccess, updateCommentFailure, updateCommentSuccess } from "../actions/comment";
+import {
+    addCommentSuccess,
+    deleteCommemtSuccess,
+    deleteCommentFailure,
+    loadComment,
+    loadCommentFailure,
+    loadCommentSuccess,
+    updateCommentFailure,
+    updateCommentSuccess
+} from "../actions/comment";
 import { ADD_COMMENT, DELETE_COMMENT, LOAD_COMMENT, UPDATE_COMMENT } from "../constants";
 
 const loadCommentFlow = ({api}) => ({dispatch}) => next => async(action) =>{
@@ -6,7 +15,6 @@ const loadCommentFlow = ({api}) => ({dispatch}) => next => async(action) =>{
     if(action.type === LOAD_COMMENT){
         try{
             const comment = await api.comment.loadComment()
-            console.log(comment)
             dispatch(loadCommentSuccess(comment))
         }catch(error){
             console.log(error)
@@ -19,8 +27,9 @@ const addCommentFlow = ({api}) => ({dispatch}) => next => async(action) =>{
     next(action);
     if(action.type === ADD_COMMENT){
         try{
-            const comment = await api.comment.addComment()
+            const comment = await api.comment.addComment(action.payload)
             dispatch(addCommentSuccess(comment))
+            dispatch(loadComment())
         }catch(error){
             dispatch(loadCommentFailure(error))
         }
@@ -45,6 +54,7 @@ const deleteCommentFlow = ({api}) => ({dispatch}) => next => async(action) => {
         try{
             const idComment = await api.comment.deleteComment(action.payload)
             dispatch(deleteCommemtSuccess(idComment))
+            dispatch(loadComment())
         }catch(error){
             dispatch(deleteCommentFailure(error))
         }

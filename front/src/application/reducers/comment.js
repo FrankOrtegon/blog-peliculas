@@ -31,7 +31,7 @@ const reducer = (state = initialState, action) =>{
         case DELETE_COMMENT:
             return{...state, loading:true}
         case DELETE_COMMENT_SUCCESS:
-            return{...state, loading:false, comment: action.payload}
+            return{...state, loading:false}
         case DELETE_COMMENT_FAILURE:
             return{...state, loading:false, error: action.payload}
         default:

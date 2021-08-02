@@ -1,42 +1,34 @@
-import { deleteComment } from "../../../../application/actions/comment";
+import axios from "axios";
 
 const functions = {
 
-    loadComment:()=>{
-        const commentOne = [{
-            idComment:"1",
-            content :"Primer comentario"
-        },{
-            idComment:"2",
-            content : "Segundo comentario"
-        }]
-        return commentOne;
+    loadComment: async () => {
+        const response = await axios.get('https://blogmovie.herokuapp.com/api/get/')
+        return response.data;
     },
 
-    addComment:()=>{
-        return{
-            idComment:"12",
-            idPublication:"1",
-            idCount:"12",
-            content:"Este es el comentario"
-        }
+    addComment: async (comment) => {
+        const response = await axios.post('https://blogmovie.herokuapp.com/api/add/', comment)
+        return response.data
     },
 
-    updateComment:(comment)=>{
+    updateComment: (comment) => {
         return {
-            idComment:comment.idComment,
+            idComment: comment.idComment,
             idPublication: comment.idPublication,
             idCount: comment.idCount,
             content: comment.content
         }
     },
 
-    deleteComment:(idComment)=>{
-        return{
-            
-        }
+    deleteComment: async (idComment) => {
+        await axios.delete('https://blogmovie.herokuapp.com/api/delete/' + idComment).then(() => {
+            return idComment
+        }).catch(error => {
+            return error
+        })
     }
-    
+
 }
 
 
