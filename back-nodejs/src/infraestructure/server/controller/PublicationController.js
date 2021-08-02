@@ -8,8 +8,8 @@ const mongoPublicationRepository = require ('../../repository/mongoPublicationRe
 
 async function createPublication (req,res){
     try{
-        const {idCount, name, category, description, voto}=req.body
-        let publication=await addPublication(idCount, name, category, description, voto, mongoPublicationRepository.prototype)
+        const {idCount, name, category, description, like, image}=req.body
+        let publication=await addPublication(idCount, name, category, description, like, image, mongoPublicationRepository.prototype)
         res.json(publication)
     }catch(error){
         res.status(500).send(error);
@@ -37,8 +37,8 @@ async function removePublication(req, res) {
 
 async function modificPublication(req, res) {
     try {
-        const { id, name, category, description } = req.body;
-        res.json(await updatePublication(id, name, category, description, mongoPublicationRepository.prototype))
+        const { id, name, category, description, image } = req.body;
+        res.json(await updatePublication(id, name, category, description, image, mongoPublicationRepository.prototype))
     } catch (error) {
         res.status(500).send(error);
     }

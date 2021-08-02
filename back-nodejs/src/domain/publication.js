@@ -1,13 +1,14 @@
 'use strict';
 
 class Publication {
-    constructor (id,idCount, name, category, description, like){
+    constructor (id,idCount, name, category, description, like, image){
         this.id = id;
         this.idCount = idCount;
         this.name=name;
         this.description=description;
         this.category=category;
-        this.voto=voto;
+        this.like=like;
+        this.image=image;
     
     };
 }
