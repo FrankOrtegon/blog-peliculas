@@ -15,7 +15,8 @@ const functions = {
             id: publication.id,
             name: publication.name,
             category: publication.category,
-            description: publication.description
+            description: publication.description, 
+            image:publication.image
         }
     },
     deletePublication: async (idPublication) => {

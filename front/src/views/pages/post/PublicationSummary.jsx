@@ -12,28 +12,28 @@ export const PublicationSummary = ({publication, count, deletePublications, comm
         deletePublications(publication._id)
     }
 
-    const voteSubmit = () =>{
-        updateVote(publication)
-    }
-
     return (
         <div className="card my-5">
             <div className="card-body">
                 <h5 className="card-title">Title: {publication.name}</h5>
                 <h6 className="card-subtitle mb-2 ">Category: {publication.category}</h6>
+                <img src={publication.image} className={"card-img mb-3"} alt={""}/>
                 <p className={"card-text"}>
                     Content: {publication.description}
                 </p>
+                
                 {((publication.idCount === count.idCount) && count.plan.plan) ?
                     <div>
-                        <button className={"btn btn-danger mr-1 px-5"} onClick={deleteSubmit}>Delete <i
+                        <button className={"btn btn-danger px-5 float-right mr-1 px-5"} onClick={deleteSubmit}>Delete <i
                             className="bi bi-trash"/>
                         </button>
-                        <button className={"btn btn-info mr-1 px-5"} onClick={deleteSubmit}>Vote <i
-                            className="bi bi-trash"/>
-                        </button>
+                        <a href={publication.like}><button className={"btn btn-info px-5 float-right mr-1 px-5"} >View <i
+                            className="bi bi-play-btn"/>
+                        </button></a>
+                        
                     </div>
                     : null}
+                <br/>
                 <hr className="my-4"/>
                 {(count.plan.plan)?
                     <CommentCreate addComment={addComment} count={count} idPublication={publication._id} />
