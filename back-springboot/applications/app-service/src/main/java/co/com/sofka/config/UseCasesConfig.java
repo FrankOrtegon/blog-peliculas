@@ -4,6 +4,7 @@ import co.com.sofka.model.count.gateways.CountRepository;
 import co.com.sofka.model.count.gateways.UserRepository;
 import co.com.sofka.model.publication.gateways.CategoryRepository;
 import co.com.sofka.model.publication.gateways.CommentRepository;
+import co.com.sofka.model.publication.gateways.PublicationRepository;
 import co.com.sofka.usecase.count.AddCountUseCase;
 import co.com.sofka.usecase.count.AddUserUseCase;
 import co.com.sofka.usecase.count.GetCountUseCase;
@@ -65,4 +66,11 @@ public class UseCasesConfig {
         return new DeleteCategoryUseCase(categoryRepository);
     }
 
+    public CreatePublicationUseCase createPublication(PublicationRepository publicationRepository){
+        return new CreatePublicationUseCase(publicationRepository);
+    }
+
+    public AddVoteUseCase addVoteTo(PublicationRepository publicationRepository){
+        return new AddVoteUseCase(publicationRepository);
+    }
 }
