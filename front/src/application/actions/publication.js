@@ -10,7 +10,10 @@ import {
     UPDATE_PUBLICATIONS_FAILURE,
     DELETE_PUBLICATIONS,
     DELETE_PUBLICATIONS_SUCCESS,
-    DELETE_PUBLICATIONS_FAILURE
+    DELETE_PUBLICATIONS_FAILURE,
+    UPDATE_VOTE,
+    UPDATE_VOTE_SUCCESS,
+    UPDATE_VOTE_FAILURE
 } from "../constants";
 
 export const loadPublications = () => ({
@@ -70,4 +73,21 @@ export const deletePublicationsSuccess = (id) => ({
 export const deletePublicationsFailure = (error) => ({
     type: DELETE_PUBLICATIONS_FAILURE,
     payload: error
+})
+
+
+export const updateVote = (publication) =>({
+    type : UPDATE_VOTE,
+    payload : publication
+})
+
+export const updateVoteSuccess = (publication) => ({
+    type : UPDATE_VOTE_SUCCESS,
+    payload : publication
+
+})
+
+export const updateVoteFailure = (error) => ({
+    typoe : UPDATE_VOTE_FAILURE,
+    payload : error
 })

@@ -1,4 +1,4 @@
-import {LOAD_PUBLICATIONS, ADD_PUBLICATIONS, UPDATE_PUBLICATIONS, DELETE_PUBLICATIONS} from "../constants";
+import {LOAD_PUBLICATIONS, ADD_PUBLICATIONS, UPDATE_PUBLICATIONS, DELETE_PUBLICATIONS, UPDATE_VOTE} from "../constants";
 import {
     loadPublicationsFailure,
     loadPublicationsSuccess,
@@ -7,7 +7,7 @@ import {
     updatePublicationsSuccess,
     updatePublicationsFailure,
     deletePublicationsSuccess,
-    deletePublicationsFailure, loadPublications
+    deletePublicationsFailure, loadPublications, updateVoteFailure, updateVoteSuccess, updateVote
 } from "../actions/publication"
 
 const loadPublicationFlow = ({api}) => ({dispatch}) => next => async (action) => {
@@ -64,11 +64,24 @@ const deletePublicationFlow = ({api}) => ({dispatch}) => next => async (action) 
     }
 
 }
+
+const updateVoteFlow = ({api}) => ({dispatch}) => next => async (action) => {
+    next(action);
+    if(action.type === UPDATE_VOTE){
+        try{
+            const publications = await api.publication.updateVote(action.payload)
+            dispatch(updateVoteSuccess(publications)) 
+        }catch(error){
+            dispatch(updateVoteFailure)
+        }
+    }
+}
 const middlewarePublication = [
     loadPublicationFlow,
     addPublicationFlow,
     updatePublicationFlow,
-    deletePublicationFlow
+    deletePublicationFlow,
+    updateVoteFlow
 ]
 
 export default middlewarePublication

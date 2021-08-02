@@ -1,15 +1,19 @@
 import React from "react";
 import {bindActionCreators} from "redux";
-import {deletePublications, loadPublications} from "../../../application/actions/publication";
+import {deletePublications, loadPublications, updateVote} from "../../../application/actions/publication";
 import {connect} from "react-redux";
 import {getComment} from "../../../application/selectors/comment";
 import CommentSummary from "../comment/CommentSummary";
 import CommentCreate from "../comment/CommentCreate";
 
-export const PublicationSummary = ({publication, count, deletePublications, comment,addComment, deleteComment}) => {
+export const PublicationSummary = ({publication, count, deletePublications, comment,addComment, deleteComment, updateVote}) => {
 
     const deleteSubmit = () => {
         deletePublications(publication._id)
+    }
+
+    const voteSubmit = () =>{
+        updateVote(publication)
     }
 
     return (
@@ -25,7 +29,7 @@ export const PublicationSummary = ({publication, count, deletePublications, comm
                         <button className={"btn btn-danger mr-1 px-5"} onClick={deleteSubmit}>Delete <i
                             className="bi bi-trash"/>
                         </button>
-                        <button className={"btn btn-info mr-1 px-5"} onClick={deleteSubmit}>Update <i
+                        <button className={"btn btn-info mr-1 px-5"} onClick={deleteSubmit}>Vote <i
                             className="bi bi-trash"/>
                         </button>
                     </div>
@@ -45,7 +49,7 @@ export const PublicationSummary = ({publication, count, deletePublications, comm
 }
 
 const mapDispatchToProps = (dispatch) => {
-    return bindActionCreators({loadPublications, deletePublications}, dispatch);
+    return bindActionCreators({loadPublications, deletePublications, updateVote}, dispatch);
 }
 
 const mapStateToProps = (state) => {
