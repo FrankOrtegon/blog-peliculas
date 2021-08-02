@@ -9,15 +9,19 @@ module.exports = class extends publicationRepository{
     }
 
     async save(publicationEntity){
-        const {idCount, name, category, description} = publicationEntity
+        const {idCount, name, category, description, voto} = publicationEntity
 
-        const mongoosePublication = new publicationSchema({idCount, name, category, description})
+        const mongoosePublication = new publicationSchema({idCount, name, category, description, voto})
         await mongoosePublication.save()
-        return new publication( mongoosePublication._id, mongoosePublication.idCount,mongoosePublication.name,mongoosePublication.category,mongoosePublication.description )
+        return new publication( mongoosePublication._id, mongoosePublication.idCount,mongoosePublication.name,mongoosePublication.category,mongoosePublication.description, mongoosePublication.voto )
     }
 
     async findAll(){
         return publicationSchema.find({})
+    }
+
+    async findById(){
+        return publicationSchema.findById({_id: id})
     }
 
     async findByCategory(category){
@@ -39,6 +43,10 @@ module.exports = class extends publicationRepository{
         return new publication(mongoosePublication._id,mongoosePublication.name,mongoosePublication.category,mongoosePublication.description )
            
     }
+
+    
+
+    
 
 
    

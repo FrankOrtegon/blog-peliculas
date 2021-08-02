@@ -10,6 +10,10 @@ class PublicationRepository{
         throw new Error('ERR_METHOD_NOT_IMPLEMENTED');
     }
 
+    findById(id){
+        throw new Error('ERR_METHOD_NOT_IMPLEMENTED');
+    }
+
     findByCategory(category){
         throw new Error('ERR_METHOD_NOT_IMPLEMENTED');
     }
@@ -21,6 +25,9 @@ class PublicationRepository{
     updatePublication(id, body) {
         throw new Error('ERR_METHOD_NOT_IMPLEMENTED');
     }
+
+
+    
 }
 
 module.exports = PublicationRepository;
