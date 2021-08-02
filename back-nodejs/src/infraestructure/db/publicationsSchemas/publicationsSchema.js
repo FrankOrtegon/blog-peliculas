@@ -10,7 +10,9 @@ const publicationSchema = mongoose.Schema({
 
     description:{type:String, require: [true, 'Descripción es obligatoria'], minLength: [2, 'La longitud minima de la descripción es 10'],},
 
-    voto: {type: Number},
+    like: {type: Number},
+
+    image: {type: String},
 
            
 })

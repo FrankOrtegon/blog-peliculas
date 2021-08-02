@@ -7,7 +7,8 @@ class Publication {
         this.name=name;
         this.description=description;
         this.category=category;
-        this.voto=voto;
+        this.like=like;
+        this.image=image;
     
     };
 }
