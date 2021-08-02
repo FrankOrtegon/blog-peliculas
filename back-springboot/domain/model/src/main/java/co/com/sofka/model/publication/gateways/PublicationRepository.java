@@ -1,8 +1,9 @@
 package co.com.sofka.model.publication.gateways;
 
-import co.com.sofka.model.publication.Comment;
+import co.com.sofka.model.publication.Publication;
 
 public interface PublicationRepository {
-    Comment addComment(Comment comment);
-    void deleteComment(String id);
+
+    Publication createPublication(Publication publication);
+    Publication addVote(Publication publication);
 }

@@ -4,15 +4,13 @@ import co.com.sofka.api.count.CountDTO;
 import co.com.sofka.api.count.CountMapper;
 import co.com.sofka.api.count.UserDTO;
 import co.com.sofka.api.count.UserMapper;
-import co.com.sofka.api.publication.CategoryDTO;
-import co.com.sofka.api.publication.CategoryMapper;
-import co.com.sofka.api.publication.CommentDTO;
-import co.com.sofka.api.publication.CommentMapper;
+import co.com.sofka.api.publication.*;
 import co.com.sofka.model.count.Count;
 import co.com.sofka.model.count.User;
 
 import co.com.sofka.model.publication.Category;
 import co.com.sofka.model.publication.Comment;
+import co.com.sofka.model.publication.Publication;
 import co.com.sofka.usecase.count.AddCountUseCase;
 import co.com.sofka.usecase.count.AddUserUseCase;
 import co.com.sofka.usecase.count.GetCountUseCase;
@@ -49,6 +47,9 @@ public class ApiRest {
 
     private final AddUserUseCase addUserUseCase;
     private final UserMapper userMapper;
+    private final PublicationMapper publicationMapper;
+    private final AddVoteUseCase addVoteUseCase;
+    private final CreatePublicationUseCase createPublicationUseCase;
 
 
     @PostMapping(path = "/add")
@@ -114,6 +115,18 @@ public class ApiRest {
     @DeleteMapping(path = "/delete/category/{id}")
     public void deleteCategory(@PathVariable("id") String idCategory){
         deleteCategoryUseCase.deleteCateogry(idCategory);
+    }
+
+    @PostMapping(path = "/create/publication")
+    public PublicationDTO createPublication(@RequestBody PublicationDTO publicationDTO){
+        Publication publication = publicationMapper.fromModel(publicationDTO);
+        return publicationMapper.fromDTO(createPublicationUseCase.createPublication(publication));
+    }
+
+    @PutMapping(path = "/add/vote")
+    public PublicationDTO addVote(@RequestBody PublicationDTO publicationDTO){
+        Publication publication = publicationMapper.fromModel(publicationDTO);
+        return publicationMapper.fromDTO(addVoteUseCase.addVoteToPublication(publication));
     }
 
 }

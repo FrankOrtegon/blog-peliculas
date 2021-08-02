@@ -27,6 +27,13 @@ describe('reducer user test functions', () => {
         plan: "false",
     }
 
+    const dummyComment = {
+        idComment : "1",
+        idPublication : "2",
+        idCount : "3",
+        content : "Comentario"
+    }
+
     const initialState = {
         user: {authenticated: false},
         count: {plan: false},
@@ -81,4 +88,42 @@ describe('reducer user test functions', () => {
         expect(state).toEqual({...initialState, error: "error update count"})
     })
 
+<<<<<<< HEAD
+=======
+    test('reducer UPDATE_COUNT case', () => {
+        const action = updateCount(dummyCount)
+        const state = reducer(initialState, action);
+        expect(state).toEqual({...initialState})
+    })
+
+    test('reducer UPDATE_COUNT_SUCCESS case', () => {
+        const action = updateCountSuccess(dummyCount)
+        const state = reducer(initialState, action);
+        expect(state).toEqual({...initialState, count: dummyCount})
+    })
+
+    test('reducer UPDATE_COUNT_FAILURE case', () => {
+        const action = updateCountFailure("error update count")
+        const state = reducer(initialState, action);
+        expect(state).toEqual({...initialState, error: "error update count"})
+    })
+
+    test('reducer LOGIN_COMMENT case', () => {
+        const action = loginComment();
+        const state = reducer(initialState, action);
+        expect(state).toEqual({...initialState})
+    })
+
+    test('reducer LOGIN_COMMENT_SUCCESS case', () => {
+        const action = loginCommentSuccess(dummyComment)
+        const state = reducer(initialState, action);
+        expect(state).toEqual({...initialState, comment: dummyComment})
+    })
+
+    test('reducer LOGIN_COMMENT_FAILURE case', () => {
+        const action = loginCommentFailure("error comment login")
+        const state = reducer(initialState, action);
+        expect(state).toEqual({...initialState, error: "error comment login"})
+    })
+>>>>>>> aa278ed5d6b104a0725ed6264b960dd9f3bec021
 })

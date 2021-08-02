@@ -9,11 +9,11 @@ module.exports = class extends publicationRepository{
     }
 
     async save(publicationEntity){
-        const {idCount, name, category, description, voto} = publicationEntity
+        const {idCount, name, category, description, like, image} = publicationEntity
 
-        const mongoosePublication = new publicationSchema({idCount, name, category, description, voto})
+        const mongoosePublication = new publicationSchema({idCount, name, category, description, like, image})
         await mongoosePublication.save()
-        return new publication( mongoosePublication._id, mongoosePublication.idCount,mongoosePublication.name,mongoosePublication.category,mongoosePublication.description, mongoosePublication.voto )
+        return new publication( mongoosePublication._id, mongoosePublication.idCount,mongoosePublication.name,mongoosePublication.category,mongoosePublication.description, mongoosePublication.like, mongoosePublication.image )
     }
 
     async findAll(){
@@ -38,9 +38,9 @@ module.exports = class extends publicationRepository{
         /* 
         const {name, category, description} = publicationEntity
         const mongoosePublication = new publicationSchema({name, category, description}) */
-        const {_id,name,category,description} = publicationModific
-        await publicationSchema.updateOne({_id:_id},{name:name,category:category,description:description})
-        return new publication(mongoosePublication._id,mongoosePublication.name,mongoosePublication.category,mongoosePublication.description )
+        const {_id,name,category,description, image} = publicationModific
+        await publicationSchema.updateOne({_id:_id},{name:name,category:category,description:description, image:image})
+        return new publication(mongoosePublication._id,mongoosePublication.name,mongoosePublication.category,mongoosePublication.description, mongoosePublication.image )
            
     }
 
