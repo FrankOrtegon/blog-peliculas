@@ -18,8 +18,7 @@ import { ADD_PUBLICATIONS,
 
 const initialState ={
     publication:[],
-    error : null,
-    loading:false
+    error : null
 };
 
 const reducer = (state = initialState, action) =>{
