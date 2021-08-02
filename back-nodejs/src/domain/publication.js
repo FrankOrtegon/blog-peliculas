@@ -1,7 +1,7 @@
 'use strict';
 
 class Publication {
-    constructor (id,idCount, name, category, description, like){
+    constructor (id,idCount, name, category, description, voto){
         this.id = id;
         this.idCount = idCount;
         this.name=name;
