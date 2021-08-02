@@ -21,7 +21,7 @@ export const PublicationSummary = ({publication, count, deletePublications, comm
                 <p className={"card-text"}>
                     Content: {publication.description}
                 </p>
-                <a src={publication.like}><button className={"btn btn-info px-5 float-right mr-1 px-5"} >View <i
+                <a href={publication.like}><button className={"btn btn-info px-5 float-right mr-1 px-5"} >View <i
                             className="bi bi-play-btn"/>
                         </button></a>
                 {((publication.idCount === count.idCount) && count.plan.plan) ?
