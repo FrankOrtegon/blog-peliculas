@@ -43,10 +43,10 @@ class ApiRestTest {
      void postComment() throws Exception{
 
         //Arrange
-        Comment comment = new Comment("1",IdPublication.of("12"),IdCount.of("1233"),Content.of("Ojala"));
-        Comment commentReturn = new Comment("1",IdPublication.of("12"),IdCount.of("1233"),Content.of("Ojala"));
+        Comment comment = new Comment("1",IdPublication.of("12"),"12",Content.of("Ojala"));
+        Comment commentReturn = new Comment("1",IdPublication.of("12"),"1343",Content.of("Ojala"));
 
-        doReturn(commentReturn).when(addCommentUseCase).addComment(any());
+        doReturn(commentReturn).when(addCommentUseCase).addCommentary(any());
 
         //Act && Assert
         mockMvc.perform(post("/api/add")

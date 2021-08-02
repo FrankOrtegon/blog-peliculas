@@ -25,7 +25,10 @@ const functions = {
             return error
         })
     },
-
+    updateVote : async (publication) => {
+        const response = await axios.put('https://blogmovie.herokuapp.com/api/add/vote', publication);
+        return response.data
+    }
 
 }
 
