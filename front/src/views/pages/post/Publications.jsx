@@ -27,10 +27,7 @@ const Publications = ({count, publication, comment, loadPublications, addPublica
                         <div className="card-body">
                             <h3 className="card-title text-center">Instructions</h3>
                             <p className={"card-text"}>
-                                Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                                Fugit iste nobis possimus? Ad culpa dignissimos distinctio
-                                fuga incidunt ipsum, iure magni molestias odio pariatur perferendis
-                                quo quos reprehenderit velit vitae?
+                            Como un buen amante del cine y las series, probablemente te gustará conocer el top de los mejores blogs de series y peliculas en Colombia.
                             </p>
                         </div>
                     </div>

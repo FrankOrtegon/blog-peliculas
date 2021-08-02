@@ -7,6 +7,7 @@ export const PublicationCreate = ({idCount, addPublications}) => {
     const [category, setCategory] = useState('All');
     const [description, setDescription] = useState('');
     const [image, setImage] = useState('');
+    const [like, setLike] = useState('');
 
     const publicationCreateSubmit = (event) => {
         event.preventDefault();
@@ -15,7 +16,8 @@ export const PublicationCreate = ({idCount, addPublications}) => {
             name: name,
             category: category,
             description: description,
-            image:image
+            image:image,
+            like:like
         }
         addPublications(publicationObject)
         alertify.success("add publication success")
@@ -52,6 +54,11 @@ export const PublicationCreate = ({idCount, addPublications}) => {
                        className={"form-control"}
                        value={image}
                        onChange={event => setImage(event.target.value)}/>
+                <label className={"m-3"}>Link</label>
+                <input placeholder={"Link "}
+                       className={"form-control"}
+                       value={like}
+                       onChange={event => setLike(event.target.value)}/>
                 <div className="text-center">
                     <button onClick={publicationCreateSubmit} className="btn btn-success px-5 mt-4 ">Add <i
                         className="bi bi-plus-square"/>
