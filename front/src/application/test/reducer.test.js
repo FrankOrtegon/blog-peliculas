@@ -88,8 +88,6 @@ describe('reducer user test functions', () => {
         expect(state).toEqual({...initialState, error: "error update count"})
     })
 
-<<<<<<< HEAD
-=======
     test('reducer UPDATE_COUNT case', () => {
         const action = updateCount(dummyCount)
         const state = reducer(initialState, action);
@@ -125,5 +123,4 @@ describe('reducer user test functions', () => {
         const state = reducer(initialState, action);
         expect(state).toEqual({...initialState, error: "error comment login"})
     })
->>>>>>> aa278ed5d6b104a0725ed6264b960dd9f3bec021
 })
