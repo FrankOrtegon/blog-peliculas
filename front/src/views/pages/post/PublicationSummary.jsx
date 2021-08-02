@@ -21,6 +21,7 @@ export const PublicationSummary = ({publication, count, deletePublications, comm
             <div className="card-body">
                 <h5 className="card-title">Title: {publication.name}</h5>
                 <h6 className="card-subtitle mb-2 ">Category: {publication.category}</h6>
+                <img src={publication.image} className={"card-img mb-3"} alt={""}/>
                 <p className={"card-text"}>
                     Content: {publication.description}
                 </p>
