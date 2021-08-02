@@ -5,5 +5,5 @@ import co.com.sofka.model.publication.Category;
 public interface CategoryRepository {
     Category addCategory(Category category);
     Category updateCategory(Category category);
-    void deleteByIdCateogry(String idCategory);
+    void deleteByIdCategory(String idCategory);
 }
